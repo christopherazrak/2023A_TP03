@@ -184,15 +184,24 @@ resultat = trouver_equipe_division("ANA", classement)
 print(resultat)  # ("Pacific Division", "Anaheim Ducks")
 ```
  
-### 4. simulation(dif_vis, dif_dom) /4
+### 4. jouer_match(dif_vis, dif_dom) /4
 
 <div align="justify">
   
-La fonction `simulation` modélise le résultat d'un match entre deux équipes en se basant principalement sur la différence de buts de chaque équipe sur la saison. La différence de buts est un indicateur de la performance de l'équipe, reflétant la capacité offensive et défensive de celle-ci.
+La fonction `jouer_match` simule un match entre deux équipes, l'une à domicile et l'autre visiteuse, en se basant sur les différences de buts de chaque équipe accumulées au cours de la saison. La fonction calcule le nombre de buts que chaque équipe marque pendant ce match simulé et détermine si la victoire est obtenue en temps régulier, en prolongation ou en fusillade.
 
-Pour déterminer le nombre de buts marqués par chaque équipe lors du match simulé, la fonction ajuste un nombre moyen de buts en fonction de la différence de buts de chaque équipe. Une équipe ayant une différence de buts plus élevée serait avantagée pour marquer plus de buts. Pour générer le nombre de buts marqués, la fonction utilise une distribution normale. Cela signifie que le nombre de buts est probablement proche de la moyenne, mais des variations sont possibles en fonction de l'écart-type.
+La simulation utilise la distribution normale de Python pour générer un nombre aléatoire de buts basé sur une moyenne et un écart-type. La moyenne de base est fixée à 3 buts par match, avec un écart-type de 1.5. Cette moyenne est ajustée pour tenir compte de la différence de buts entre les deux équipes, donnant un avantage à l'équipe statistiquement la plus performante. Une pénalité fixe de 0.2 est systématiquement soustraite de la moyenne de l'équipe visiteuse, pour simuler l'avantage à domicile.
 
-Après avoir déterminé le nombre de buts de chaque équipe, la fonction vérifie lequel a marqué le plus. Si une équipe a plus de buts que l'autre, elle est déclarée gagnante en temps régulier. En cas d'égalité, une décision est prise en utilisant une fonction aléatoire pour déterminer si le match se termine par une fusillade ou une prolongation.
+Les équations pour le calcul des buts sont :
+
+<p align="center">
+<img src="https://latex.codecogs.com/svg.image?\begin{align*}\text{buts\_vis}&=\text{round}\left(\text{random.normalvariate}\left(3&plus;\frac{\text{diff\_total}}{100}-0.2,1.5\right)\right)\\\text{buts\_dom}&=\text{round}\left(\text{random.normalvariate}\left(3-\frac{\text{diff\_total}}{100},1.5\right)\right)\end{align*}" /></p>
+
+où `diff_total = dif_vis - dif_dom`.
+
+Les valeurs générées sont arrondies à l'entier le plus proche. Si une valeur est négative, elle est ramenée à zéro.
+
+Si une équipe marque plus de buts que l'autre après cette simulation, elle gagne le match en temps régulier et l'indicateur `vrp` est fixé à 1. Si les deux équipes ont le même nombre de buts, une prolongation ou une fusillade est simulée. Si le match est décidé en fusillade, l'indicateur `vrp` est fixé à 0.
 </div>
 
 - **Paramètres:**
