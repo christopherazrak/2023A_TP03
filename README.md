@@ -38,13 +38,13 @@ L'objectif de ce laboratoire est de simuler la fin de la saison 2019 de la Ligue
 ### 3.1 Votre mission:
 1. Créer un programme capable de simuler la fin de la saison en se basant sur des données fournies et des fonctions aléatoires.
 2. Effectuer une étude détaillée et produire des visualisations sur les points suivants:
-  1. Équipes ayant marqué le plus et le moins de buts.
-  2. Équipes ayant accumulé le plus et le moins de points.
-  3. Équipes ayant le plus grand et le plus petit nombre de victoires et de défaites.
-  4. Analyse par division sur:
-    1. Le pourcentage de buts marqués.
-    2. Le pourcentage de points accumulés.
-    3. Le pourcentage de victoires et de défaites.
+  a. Équipes ayant marqué le plus et le moins de buts.
+  b. Équipes ayant accumulé le plus et le moins de points.
+  c. Équipes ayant le plus grand et le plus petit nombre de victoires et de défaites.
+  d. Analyse par division sur:
+    i. Le pourcentage de buts marqués.
+    ii. Le pourcentage de points accumulés.
+    iii. Le pourcentage de victoires et de défaites.
 
 ### 3.2 Données:
 - `classement2019.txt`: Liste des 31 équipes (réparties en 4 divisions) avec leurs statistiques jusqu'au 4 février.
@@ -58,20 +58,19 @@ L'objectif de ce laboratoire est de simuler la fin de la saison 2019 de la Ligue
 Une fois tous les matchs simulés, le classement des équipes est mis à jour. Le processus est répété plusieurs millions de fois pour obtenir la probabilité de qualification aux séries éliminatoires pour chaque équipe.
 
 ## 4. Déroulement d'une saison de la LNH
-La LNH se compose de 31 équipes réparties en 4 divisions. Deux divisions (Atlantique et Métropolitaine) constituent la conférence de l'Est, tandis que les deux autres (Centrale et Pacifique) forment la conférence de l'Ouest. Chaque équipe joue 82 matchs lors de la saison régulière, et les points sont attribués selon le résultat du match :
+La LNH se compose de 31 équipes réparties en 4 divisions. Deux divisions (Atlantique et Métropolitaine) constituent la conférence de l'Est, tandis que les deux autres (Centrale et Pacifique) forment la conférence de l'Ouest. Chaque équipe joue 82 matchs lors de la saison régulière, et les points sont attribués selon le résultat du match:
 - **Victoire régulière (REG):** 2 points pour le gagnant, 0 pour le perdant.
 - **Prolongation (PROL)**: 2 points pour le gagnant, 1 pour le perdant.
 - **Fusillade (FUS)**: 2 points pour le gagnant, 1 pour le perdant. Néanmoins, cette victoire n'est pas comptabilisée dans la statistique VRP.
 
-### 4.1 Classement:
-À la fin de la saison, les équipes sont classées en fonction de leurs points. En cas d'égalité, la statistique VRP est utilisée comme critère de départage. Les trois meilleures équipes de chaque division sont automatiquement qualifiées, et les deux places restantes (wildcards) sont attribuées aux meilleures équipes non encore qualifiées. Ces wildcards peuvent venir de la même division.
+À la fin de la saison, les équipes sont classées en fonction de leurs points. En cas d'égalité, la statistique VRP est utilisée comme critère de départage. Les trois meilleures équipes de chaque division sont automatiquement qualifiées, et les deux places restantes (wildcards) sont attribuées aux meilleures équipes non encore qualifiées. Ces wildcards peuvent venir de la même division. On applique le même protocole de sélection dans l’autre conférence et on obtient ainsi la liste des 16 équipes qualifiées.
 
 
+## Partie 1: Lire et construire la base de données
+### 1. lire_classement() 
+Cette fonction va lire la base de données à partir du fichier 'classement2019.txt'. Les données inscrites dans le 'classement2019.txt' sont présentées en 4 sections, chacune représente une division.  Vous allez donc faire la lecture des données en utilisant une boucle for() pour les 4 divisions.  Au début de chaque section il y a une ligne d’en-tête avec le nombre d’équipes dans la division et le nom de la division (eg. « 8  Atlantic »).  On commence par lire ces deux valeurs dans les champs appropriés de la division.  Le restant de la ligne d’en-tête sont les titres des colonnes de données et on va les ignorer (faites une lecture-bidon du reste de la ligne). 
 
- ### 1. lire_classement() /5
-Cette fonction charge en mémoire le contenu du fichier classement2019.txt et store les données dans un dictionnaire.
-
-Dans cette fonction, on veut un dictionnaire de dictionnaires qui ait la forme suivante:
+Ensuite, avec une deuxième boucle selon le nombre d’équipes à lire, on fait la lecture des 11 données de chaque équipe, une ligne de donnée à la fois. Une fois que les 4 divisions ont été lues, on ferme le fichier et on retourne un dictionnaire qui contient quatre dictionnaires, un dictionnaire pour chaque division, chaque division contient entre sept et huit équipes.
 
 ```python
  { 
@@ -89,8 +88,6 @@ Dans cette fonction, on veut un dictionnaire de dictionnaires qui ait la forme s
      # Toutes les autres équipes de la division
  }
 ```
-
-Les points seront donnés dans la lecture du fichier et storer les données dans le dictionnaire.
 
  ### 2. lire_match() /3
 Cette fonction charge en mémoire le contenu du fichier matchs2019.txt et store les données dans une liste de listes.
