@@ -398,8 +398,8 @@ La fonction `df_extraite_divison` a pour but d'extraire et de retourner un DataF
   - Un DataFrame contenant uniquement les équipes de la division spécifiée. Ce DataFrame ne possède pas la colonne "DIV".
 
 - **Lien utile :** 
-  - Filtrer les données avec Pandas : [Lien](https://pandas.pydata.org/docs/user_guide/indexing.html)
-  - Supprimer une colonne avec Pandas : [Lien](https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.drop.html)
+  - [Filtrer les données avec Pandas](https://pandas.pydata.org/docs/user_guide/indexing.html)
+  - [Supprimer une colonne avec Pandas](https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.drop.html)
 
 </div>
 
@@ -470,7 +470,7 @@ La fonction `df_sort_type` permet de trier un DataFrame selon une colonne spéci
 
 
 - **Lien utile :** 
-  - Trier un DataFrame avec Pandas: [Lien](https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.sort_values.html)
+  - [Trier un DataFrame avec Pandas](https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.sort_values.html)
 </div>
 
 - **Exemple:**
@@ -642,8 +642,8 @@ Cette fonction affiche un graphique visualisant le classement des équipes au se
   - `ascending`:  Direction du tri. Si `True`, le tri est ascendant, sinon il est descendant.
     
 - **Lien utile :** 
-  - Barplot avec Seaborn: [Lien](https://seaborn.pydata.org/generated/seaborn.barplot.html)
-  - Multi-plot grids avec Seaborn: [Lien](https://seaborn.pydata.org/tutorial/axis_grids.html)
+  - [Barplot avec Seaborn](https://seaborn.pydata.org/generated/seaborn.barplot.html)
+  - [Multi-plot grids avec Seaborn](https://seaborn.pydata.org/tutorial/axis_grids.html)
 
 - **Exemple:**
   ```python
@@ -681,7 +681,7 @@ Cette fonction génère un graphique illustrant le classement de toutes les équ
   - `ascending`:  Direction du tri. Si `True`, le tri est ascendant, sinon il est descendant.
     
 - **Lien utile :** 
-  - Barplot avec Seaborn: [Lien](https://seaborn.pydata.org/generated/seaborn.barplot.html)
+  - [Barplot avec Seaborn](https://seaborn.pydata.org/generated/seaborn.barplot.html)
     
 - **Exemple:**
 
@@ -734,8 +734,8 @@ Cette fonction affiche un graphique circulaire (ou "camembert") représentant le
   - `ascending`:  Direction du tri. Si `True`, le tri est ascendant, sinon il est descendant.
     
 - **Lien utile :** 
-  - Grouper dataframe avec Pandas: [Lien](https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.groupby.html)
-  - Pie-charts avec Plotly Express: [Lien](https://plotly.com/python/pie-charts/)
+  - [Grouper dataframe avec Pandas](https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.groupby.html)
+  - [Pie-charts avec Plotly Express](https://plotly.com/python/pie-charts/)
     
 - **Exemple:**
 
