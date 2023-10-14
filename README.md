@@ -127,7 +127,7 @@ L'objectif de ce laboratoire est de simuler la fin de la saison 2019 de la Ligue
  }
 ```
 
- ### 2. lire_match()
+ ### 5.2. lire_match()
 <div align="justify">
   
 Cette fonction est chargée de lire les informations relatives aux matchs à partir du fichier `matchs2019.txt`.</div>
@@ -148,7 +148,7 @@ La première ligne du fichier `matchs2019.txt` indique le nombre total de matchs
 ```
 
 
- ### 3. trouver_equipe_division(equipe_abv, classement)
+ ### 5.3. trouver_equipe_division(equipe_abv, classement)
  
  <div align="justify">
  
@@ -184,7 +184,7 @@ resultat = trouver_equipe_division("ANA", classement)
 print(resultat)  # ("Pacific Division", "Anaheim Ducks")
 ```
  
-### 4. jouer_match(dif_vis, dif_dom)
+### 5.4. jouer_match(dif_vis, dif_dom)
 
 <div align="justify">
   
@@ -219,7 +219,7 @@ Si une équipe marque plus de buts que l'autre après cette simulation, elle gag
   - `but_dom`: Nombre de buts marqués par l'équipe domicile.
   - `vrp`: Indicateur de victoire en temps régulier ou en prolongation (1) ou en fusillade (0).
  
-### 5. trier_classement(classement)
+### 5.5. trier_classement(classement)
 
 <div align="justify">
   
@@ -234,7 +234,7 @@ Il est important de noter que dans le cas où deux équipes ont le même nombre 
 
 </div>
  
-### 6. mis_a_jour_classement(equipe, stats, division, classment) 
+### 5.6. mis_a_jour_classement(equipe, stats, division, classment) 
 
 <div align="justify">
 
@@ -257,7 +257,7 @@ La fonction `mis_a_jour_classement` met à jour les statistiques d'une équipe d
 </div>
 
 
-### 7. simuler_rencontres(matchs, classement)
+### 5.7. simuler_rencontres(matchs, classement)
 
 <div align="justify">
   
@@ -323,9 +323,11 @@ Chaque ligne après l'en-tête représente une équipe, avec des détails:
 
 </div>
 
+## 6. Partie 2: Construire la base de données
 
+## 7. Partie 3: Analyse des données
 
- ## 8. Barème /100 <a name="bareme"></a>
+## 8. Barème /100 <a name="bareme"></a>
 
 |**Nom des fonctions**|**Nombre de points attribuer**|
 | :- | :- |
