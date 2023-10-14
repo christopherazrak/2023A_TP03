@@ -534,6 +534,102 @@ La fonction `df_sort_type` permet de trier un DataFrame selon une colonne spéci
   ```
 
 
+### 6.4. df_summary_inf(df):
+
+<div align="justify">
+  
+La fonction `df_summary_inf` prend en entrée un dataframe représentant les statistiques des équipes d'une ligue de hockey. Elle affiche ensuite les équipes qui détiennent le maximum pour chaque statistique pertinente (par exemple, victoires, défaites, buts marqués) au sein de chaque division ainsi que pour l'ensemble de la ligue.
+
+- **Paramètre:**
+  - `df`: DataFrame Pandas qui contient les informations de toutes les équipes de la ligue.
+</div>
+
+- **Exemple:**
+  ```python
+  df_summary_inf(nhl_df)
+  ```
+  
+  ```
+    Stats division Atlantic:
+    
+    	 l'équipe qui a le plus de victoire est Tampa_Bay avec 39 victoire
+    
+    	 l'équipe qui a le plus de defaite est Ottawa avec 28 defaite
+    
+    	 l'équipe qui a le plus de defaite par prolongation est Florida avec 8 defaite par prolongation
+    
+    	 l'équipe qui a le plus de points est Tampa_Bay avec 80 points
+    
+    	 l'équipe qui a le plus de buts marquer est Tampa_Bay avec 205 buts marquer
+    
+    	 l'équipe qui a le plus de buts encaisser est Ottawa avec 194 buts encaisser
+    
+    	 l'équipe qui a le plus de difference de buts est Tampa_Bay avec 59 difference de buts
+    
+    Stats division Metropolitan:
+    
+    	 l'équipe qui a le plus de victoire est NY_Islanders avec 30 victoire
+    
+    	 l'équipe qui a le plus de defaite est New_Jersey avec 24 defaite
+    
+    	 l'équipe qui a le plus de defaite par prolongation est NY_Rangers avec 7 defaite par prolongation
+    
+    	 l'équipe qui a le plus de points est NY_Islanders avec 66 points
+    
+    	 l'équipe qui a le plus de buts marquer est Pittsburgh avec 183 buts marquer
+    
+    	 l'équipe qui a le plus de buts encaisser est Philadelphia avec 176 buts encaisser
+    
+    	 l'équipe qui a le plus de difference de buts est NY_Islanders avec 26 difference de buts
+    
+    Stats division Central:
+    
+    	 l'équipe qui a le plus de victoire est Winnipeg avec 34 victoire
+    
+    	 l'équipe qui a le plus de defaite est Chicago avec 24 defaite
+    
+    	 l'équipe qui a le plus de defaite par prolongation est Chicago avec 9 defaite par prolongation
+    
+    	 l'équipe qui a le plus de points est Winnipeg avec 70 points
+    
+    	 l'équipe qui a le plus de buts marquer est Winnipeg avec 185 buts marquer
+    
+    	 l'équipe qui a le plus de buts encaisser est Chicago avec 196 buts encaisser
+    
+    	 l'équipe qui a le plus de difference de buts est Winnipeg avec 39 difference de buts
+    
+    Stats division Pacific:
+    
+    	 l'équipe qui a le plus de victoire est Calgary avec 34 victoire
+    
+    	 l'équipe qui a le plus de defaite est Los-Angeles avec 27 defaite
+    
+    	 l'équipe qui a le plus de defaite par prolongation est Anaheim avec 9 defaite par prolongation
+    
+    	 l'équipe qui a le plus de points est Calgary avec 73 points
+    
+    	 l'équipe qui a le plus de buts marquer est Calgary avec 197 buts marquer
+    
+    	 l'équipe qui a le plus de buts encaisser est Edmonton avec 172 buts encaisser
+    
+    	 l'équipe qui a le plus de difference de buts est Calgary avec 45 difference de buts
+    
+    Stats ligue:
+    
+    	 l'équipe qui a le plus de victoire est Tampa_Bay avec 39 victoire
+    
+    	 l'équipe qui a le plus de defaite est Ottawa avec 28 defaite
+    
+    	 l'équipe qui a le plus de defaite par prolongation est Anaheim avec 9 defaite par prolongation
+    
+    	 l'équipe qui a le plus de points est Tampa_Bay avec 80 points
+    
+    	 l'équipe qui a le plus de buts marquer est Tampa_Bay avec 205 buts marquer
+    
+    	 l'équipe qui a le plus de buts encaisser est Chicago avec 196 buts encaisser
+    
+    	 l'équipe qui a le plus de difference de buts est Tampa_Bay avec 59 difference de buts
+  ```
 
 ## 7. Partie 3: Analyse des données
 
