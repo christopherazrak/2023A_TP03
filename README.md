@@ -283,7 +283,7 @@ Après avoir simulé tous les matchs et mis à jour le classement pour chaque ma
 </div>
 
 
-### 8. ecrire_classement(classement)
+### 5.8. ecrire_classement(classement)
 
 <div align="justify">
 
@@ -305,23 +305,29 @@ Detroit     DET 53  21  25  7   49  19  150 174 -24
 Ottawa      OTT 52  19  28  5   43  19  159 194 -35
 ```
 
-Chaque ligne après l'en-tête représente une équipe, avec des détails:
-  - Nom complet
-  - Abréviation
-  - Nombre de matchs joués (MJ)
-  - Nombre de victoires (V),
-  - Nombre de défaites (D),
-  - Nombre de défaites en prolongation (DP),
-  - Nombre de points totaux (PTS),
-  - Nombre de victoires en temps régulier ou en prolongation (VRP),
-  - Nombre de buts marqués (BP),
-  - Nombre de buts concédés (BC)
-  - La différence de buts (DIFF).
-
 - **Paramètre :**
   - `classement`: Un dictionnaire de dictionnaires représentant le classement final des équipes par division.
 
 </div>
+
+### 5.9. equipes_qualifiees(classement)
+
+<div align="justify">
+  
+La fonction `equipes_qualifiees` détermine les équipes de hockey qui se qualifient pour les séries éliminatoires en se basant sur le classement final de la saison régulière.
+
+À la fin de la saison, le classement de chacune des 4 divisions est établi selon le nombre de points accumulés. En cas d’égalité de points entre deux équipes, la statistique VRP détermine la meilleure équipe. Dans chaque conférence :
+
+  1. Les 3 meilleures équipes de chaque division sont automatiquement qualifiées.
+  2. Les deux équipes « repêchées » qui complètent la liste des 8 équipes qualifiées sont les deux meilleures parmi les équipes non automatiquement qualifiées de ces deux divisions.
+  3. La disposition des équipes repêchées suit une logique basée sur leur division d'origine.
+</div>
+
+- **Paramètres:**
+  - `classement` : un dictionnaire contenant les statistiques des équipes pour chaque division. 
+
+- **Type de retour:**
+  - `equipes_series`: Un dictionnaire contenant deux clés : "Est" et "Ouest". La valeur associée à chaque clé est une liste de 8 noms d'équipes qualifiées pour la conférence correspondante. La liste est disposée de manière à ce qu'elle respecte la répartition : 3 équipes de la première division, 1 équipe repêchée, 3 équipes de la deuxième division, 1 équipe repêchée.
 
 ## 6. Partie 2: Construire la base de données
 ### 6.1. creer_df(classement)
