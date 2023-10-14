@@ -149,9 +149,40 @@ La première ligne du fichier `matchs2019.txt` indique le nombre total de matchs
 
 
  ### 3. trouver_equipe_division(equipe_abv, classement) /2
- À l'aide du dictionnaire classement et de l'abbréviation de l'équipe (string), trouvez et retournez le nom de l'équipe et sa division.
  
- Le point sera donné si la fonction retourne le bon nom de l'équipe et la bonne division de l'équipe.
+ <div align="justify">
+ 
+Cette fonction est conçue pour identifier le nom de l'équipe et sa division associée à partir de son acronyme.
+ </div>
+
+ <div align="justify">
+
+Dans le processus de recherche d'une équipe à partir de son acronyme au sein du dictionnaire `classement`, chaque division est minutieusement parcourue. Au sein de chaque division, chaque équipe est examinée en détail, et son acronyme est comparé à celui spécifié par le paramètre `equipe_abv`. Lorsqu'une correspondance parfaite est identifiée, c'est-à-dire que les deux acronymes concordent parfaitement, la fonction renvoie alors le nom précis de la division ainsi que le nom intégral de l'équipe concernée.
+   </div>
+ 
+- **Paramètres:**
+  - `equipe_abv`: Une chaîne de caractères représentant l'acronyme de l'équipe à rechercher.
+  - `classement`: Le dictionnaire contenant les informations des divisions et des équipes.
+    
+- **Type de retour:**
+  - Un tuple contenant deux chaînes de caractères : le nom de la division et le nom de l'équipe.
+
+- **Exemple de format de retour :**
+```python
+classement = {
+    "Pacific Division": {
+        "Anaheim Ducks": {
+            "ABV": "ANA",
+            # autres détails de l'équipe...
+        },
+        # autres équipes...
+    },
+    # autres divisions...
+}
+
+resultat = trouver_equipe_division("ANA", classement)
+print(resultat)  # ("Pacific Division", "Anaheim Ducks")
+```
  
  ### 4. simulation(diffA, diffB) /4
  Cette fonction prend en paramètre le différentiel de buts de l'équipe A et de l'équipe B. 
