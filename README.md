@@ -127,7 +127,7 @@ L'objectif de ce laboratoire est de simuler la fin de la saison 2019 de la Ligue
  }
 ```
 
- ### 2. lire_match() /3
+ ### 2. lire_match()
 <div align="justify">
   
 Cette fonction est chargée de lire les informations relatives aux matchs à partir du fichier `matchs2019.txt`.</div>
@@ -148,7 +148,7 @@ La première ligne du fichier `matchs2019.txt` indique le nombre total de matchs
 ```
 
 
- ### 3. trouver_equipe_division(equipe_abv, classement) /2
+ ### 3. trouver_equipe_division(equipe_abv, classement)
  
  <div align="justify">
  
@@ -184,7 +184,7 @@ resultat = trouver_equipe_division("ANA", classement)
 print(resultat)  # ("Pacific Division", "Anaheim Ducks")
 ```
  
-### 4. jouer_match(dif_vis, dif_dom) /4
+### 4. jouer_match(dif_vis, dif_dom)
 
 <div align="justify">
   
@@ -219,40 +219,69 @@ Si une équipe marque plus de buts que l'autre après cette simulation, elle gag
   - `but_dom`: Nombre de buts marqués par l'équipe domicile.
   - `vrp`: Indicateur de victoire en temps régulier ou en prolongation (1) ou en fusillade (0).
  
- ### 5. trier_classement(classement) /2
- À l'aide du dictionnaire classement et de l'abbréviation de l'équipe (string), trouvez et retournez le nom de l'équipe et sa division.
- 
- Pour chaque division, classer les équipes selon leurs nombres de points. classement est un dictionnaire de dictionnaires
- 
- Les points seront données si le dictionnaire est bien parcouru et si le triage a fonctionné.
- 
- ### 6. mis_a_jour_classement(equipe, stats, division, classment) /2
- Cette fonction prends en paramètres le nom de l'équipe, un dictionnaire stats, le nom de la division et le classement (dictionnaire de dictionnaires).
- 
- Le dictionnaire stats a la forme suivante:
- ```python
-    {
-        'PTS': 2,
-        'BP': 5,
-        'BC': 1,
-        'VRP': 1
-    }
- ```
+### 5. trier_classement(classement)
 
- Cette fonction met à jour le classement en ajoutant les données du dictionnaire stats, le nombre de victoire, défaite, ... 
- Bref, elle met à jour tous les éléments du dictionnaire classement.
+<div align="justify">
+  
+La fonction `trier_classement` organise les équipes au sein de chaque division de manière descendante selon leur nombre total de points.
 
- ### 7. simuler_rencontres(matchs, classement) /3
- Cette fonction prend en paramètres le dictionnaire de dictionnaires classement et la liste de liste matchs.
+Chaque division doit être triée indépendamment des autres. La fonction modifie directement le dictionnaire `classement` sans rien retourner. Une fois la fonction exécutée, en consultant le dictionnaire `classement`, vous devriez voir les équipes de chaque division classées de la plus performante à la moins performante, basées sur leur nombre de points.
+
+Il est important de noter que dans le cas où deux équipes ont le même nombre de points dans une division, le critère de tri supplémentaire peut être basé sur d'autres statistiques, comme le nombre de buts pour ou contre, mais cela dépendra de l'implémentation spécifique et des règles de la ligue.
+
+- **Paramètres:**
+  - `classement` (dict): Un dictionnaire de dictionnaires représentant le classement actuel des équipes par division. La structure du dictionnaire est détaillée dans les fonctions précédentes, notamment `mis_a_jour_classement`.
+
+</div>
  
- Pour chaque match, on veut connaitre le nom et la division des deux équipes impliquées. N'oubliez pas d'utiliser les fonctions créées précédemment.
- 
- Ensuite, on veut simuler la rencontre. N'oubliez pas d'utiliser les fonctions créées précédemment.
- 
- Ensuite, on veut créer les dictionnaires stats_equipe_A et stats_equipe_B. Ces dictionnaires seront utilisés dans la 
- fonction mis_a_jour_classement(). Du coup, n'oubliez pas de respecter le format demandé dans cette fonction.
- 
- Finalement, il faut que vous mettiez à jour le classement. N'oubliez pas d'utiliser les fonctions créées précédemment.
+### 6. mis_a_jour_classement(equipe, stats, division, classment) 
+
+<div align="justify">
+
+La fonction `mis_a_jour_classement` met à jour les statistiques d'une équipe donnée dans un classement de division après la conclusion d'un match. Elle utilise les statistiques fournies pour augmenter le nombre de points, le nombre de buts marqués, le nombre de buts encaissés, et détermine également si la victoire a été obtenue en temps régulier ou en prolongation.
+
+- **Paramètres:**
+  - `equipe`: Le nom de l'équipe dont les statistiques doivent être mises à jour.
+  - `stats`: Un dictionnaire contenant les statistiques du match récent. Il a la structure suivante :
+     ```python
+     {
+         'PTS': int,  # Nombre de points gagnés dans le match.
+         'BP': int,  # Buts marqués par l'équipe lors du match.
+         'BC': int,  # Buts encaissés par l'équipe lors du match.
+         'VRP': int  # Valeur 1 si victoire en temps régulier ou en prolongation, 0 si en fusillade.
+     }
+     ```
+  - `division`: Le nom de la division à laquelle appartient l'équipe.
+  - `classment`: Un dictionnaire de dictionnaires représentant le classement actuel des équipes par division.
+
+</div>
+
+
+### 7. simuler_rencontres(matchs, classement)
+
+<div align="justify">
+  
+La fonction `simuler_rencontres` est responsable de la simulation d'une série de rencontres entre différentes équipes et de la mise à jour du classement en conséquence.
+
+Après avoir extrait le nom et la division des deux équipes impliquées dans chaque match de la liste `matchs`, la fonction simule le résultat du match en utilisant `jouer_match`. Suite à cette simulation, vous devez créer deux dictionnaires, `stats_vis` et `stats_dom`, pour contenir les statistiques de la rencontre pour chaque équipe. Ces dictionnaires doivent respecter le format suivant :
+  ```python
+  {
+      'PTS': int,  # Nombre de points gagnés dans le match.
+      'BP': int,  # Buts marqués par l'équipe lors du match.
+      'BC': int,  # Buts encaissés par l'équipe lors du match.
+      'VRP': int  # Valeur 1 si victoire en temps régulier ou en prolongation, 0 si en fusillade.
+  }
+  ```
+Ces dictionnaires sont ensuite utilisés pour mettre à jour le classement général des équipes en utilisant la fonction `mis_a_jour_classement()`.
+
+Après avoir simulé tous les matchs et mis à jour le classement pour chaque match, la fonction `trier_classement(classement)` est appelée pour s'assurer que le classement des équipes au sein de chaque division est organisé de manière descendante selon leur nombre total de points.
+
+- **Paramètres :**
+  - `matchs`: Une liste de matchs à simuler. Chaque match est représenté par une liste contenant le nom et la division des deux équipes impliquées.
+  - `classement`: Un dictionnaire de dictionnaires représentant le classement actuel des équipes par division.
+
+</div>
+
 
  ### 8. ecrire_classement(classement) /4
  Cette fonction écrit le classement final dans un fichier text (classement_fianl.txt). On veut que vous respectiez le format classement2019.txt
