@@ -640,6 +640,10 @@ Cette fonction affiche un graphique visualisant le classement des équipes au se
   - `df`: DataFrame Pandas qui contient les informations de toutes les équipes de la ligue.
   - `criteria : Le critère de tri, tel que "PTS" pour les points, "V" pour les victoires, "BP" pour les buts marqués, etc.
   - `ascending`:  Direction du tri. Si `True`, le tri est ascendant, sinon il est descendant.
+    
+- **Lien utile :** 
+  - Barplot avec Seaborn: [Lien](https://seaborn.pydata.org/generated/seaborn.barplot.html)
+  - Multi-plot grids avec Seaborn: [Lien](https://seaborn.pydata.org/tutorial/axis_grids.html)
 
 - **Exemple:**
   ```python
@@ -675,7 +679,10 @@ Cette fonction génère un graphique illustrant le classement de toutes les équ
   - `df`: DataFrame Pandas qui contient les informations de toutes les équipes de la ligue.
   - `criteria : Le critère de tri, tel que "PTS" pour les points, "V" pour les victoires, "BP" pour les buts marqués, etc.
   - `ascending`:  Direction du tri. Si `True`, le tri est ascendant, sinon il est descendant.
-
+    
+- **Lien utile :** 
+  - Barplot avec Seaborn: [Lien](https://seaborn.pydata.org/generated/seaborn.barplot.html)
+    
 - **Exemple:**
 
   ```python    
@@ -725,7 +732,11 @@ Cette fonction affiche un graphique circulaire (ou "camembert") représentant le
   - `df`: DataFrame Pandas qui contient les informations de toutes les équipes de la ligue.
   - `criteria : Le critère de tri, tel que "PTS" pour les points, "V" pour les victoires, "BP" pour les buts marqués, etc.
   - `ascending`:  Direction du tri. Si `True`, le tri est ascendant, sinon il est descendant.
-
+    
+- **Lien utile :** 
+  - Grouper dataframe avec Pandas: [Lien](https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.groupby.html)
+  - Pie-charts avec Plotly Express: [Lien](https://plotly.com/python/pie-charts/)
+    
 - **Exemple:**
 
   ```python
