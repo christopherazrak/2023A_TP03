@@ -91,11 +91,25 @@ L'objectif de ce laboratoire est de simuler la fin de la saison 2019 de la Ligue
 
 ## Partie 1: Lire et construire la base de données
 ### 1. lire_classement() 
-<div align="justify">Cette fonction va lire la base de données à partir du fichier 'classement2019.txt'. Les données inscrites dans le 'classement2019.txt' sont présentées en 4 sections, chacune représente une division.  Vous allez donc faire la lecture des données en utilisant une boucle for() pour les 4 divisions.  Au début de chaque section il y a une ligne d’en-tête avec le nombre d’équipes dans la division et le nom de la division (eg. « 8  Atlantic »).  On commence par lire ces deux valeurs dans les champs appropriés de la division.  Le restant de la ligne d’en-tête sont les titres des colonnes de données et on va les ignorer (faites une lecture-bidon du reste de la ligne). </div> <br>
 
+<div align="justify">
 
-<div align="justify">Ensuite, avec une deuxième boucle selon le nombre d’équipes à lire, on fait la lecture des 11 données de chaque équipe, une ligne de donnée à la fois. Une fois que les 4 divisions ont été lues, on ferme le fichier et on retourne un dictionnaire qui contient quatre dictionnaires, un dictionnaire pour chaque division, chaque division contient entre sept et huit équipes.</div>
+  Cette fonction est destinée à lire la base de données depuis le fichier `classement2019.txt`.</div>
 
+<div align="justify">
+
+  Le fichier `classement2019.txt` est organisé en quatre sections, chacune représentant une division. Par exemple, une ligne d'en-tête typique pourrait ressembler à `8 Atlantic`, où `8` indique le nombre d'équipes et `Atlantic` est le nom de la division. Après avoir lu ces informations, vous devez ignorer le reste de la ligne d'en-tête qui contient les titres des colonnes de données.</div>
+
+<div align="justify">
+
+  Ensuite, en utilisant une boucle basée sur le nombre d'équipes, chaque équipe est lue ligne par ligne, capturant 11 données pour chaque équipe. Une fois que les 4 divisions ont été lues, le fichier est fermé et la fonction retourne un dictionnaire qui encapsule les quatre divisions, avec chaque division contenant entre sept ou huit équipes.</div>
+
+- **Type de retour:**
+  - Le dictionnaire principal est divisé par divisions.
+  - Un dictionnaire dont les clés sont les noms des divisions et les valeurs sont des dictionnaires.
+  - Chaque sous-dictionnaire correspond à une équipe et contient des paires clé-valeur pour différentes informations sur l'équipe.
+
+- **Exemple de format de retour :**
 ```python
  { 
    'NOM DIVISION': {
@@ -114,8 +128,21 @@ L'objectif de ce laboratoire est de simuler la fin de la saison 2019 de la Ligue
 ```
 
  ### 2. lire_match() /3
-<div align="justify"> Le nombre de lignes de données inscrites dans le fichier-texte 'matchs2019.txt' apparait à la première ligne du fichier (eg. « 467 »).  On commence par lire cette valeur et l’inscrire dans le champ qui indique le nombre de matchs de la référence 'liste_matchs'.  Ensuite, avec une boucle selon ce nombre, on lit les deux acronymes des équipes qui s’affrontent dans un match.  Le premier acronyme représente l’équipe visiteur et le deuxième est l’équipe à domicile.  Donc, si une ligne de données contient 'TOR  MTL' on comprend que c’est l’équipe de Toronto qui joue au domicile de celle de Montréal.  Il y a un match par ligne dans ce fichier.  </div>
+<div align="justify">
+  
+Cette fonction est chargée de lire les informations relatives aux matchs à partir du fichier `matchs2019.txt`.</div>
 
+<div align="justify">
+
+La première ligne du fichier `matchs2019.txt` indique le nombre total de matchs, par exemple `467`. Après avoir lu cette information, la fonction parcourt chaque ligne du fichier pour identifier les deux équipes qui joueront dans un match spécifique. Par exemple, une entrée telle que `TOR MTL` signifie que l'équipe de `Toronto` joue en déplacement contre celle de `Montréal`. Chaque ligne du fichier correspond donc à un match distinct et est transformée en une sous-liste de deux éléments dans la liste retournée.</div>
+
+- **Type de retour:**
+  - Une liste de listes, où chaque sous-liste contient deux chaînes de caractères (des acronymes).
+  - Chaque sous-liste représente un match distinct.
+  - Le premier acronyme de la sous-liste désigne l'équipe visiteuse.
+  - Le deuxième acronyme de la sous-liste représente l'équipe à domicile.
+
+- **Exemple de format de retour :**
 ```python
     [['ANA', 'TOR'], ['L-A', 'NYR'], ...]
 ```
