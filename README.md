@@ -89,8 +89,8 @@ L'objectif de ce laboratoire est de simuler la fin de la saison 2019 de la Ligue
 <div align="justify">À la fin de la saison, les équipes sont classées en fonction de leurs points. En cas d'égalité, la statistique VRP est utilisée comme critère de départage. Les trois meilleures équipes de chaque division sont automatiquement qualifiées, et les deux places restantes (wildcards) sont attribuées aux meilleures équipes non encore qualifiées. Ces wildcards peuvent venir de la même division. On applique le même protocole de sélection dans l’autre conférence et on obtient ainsi la liste des 16 équipes qualifiées.</div>
 
 
-## Partie 1: Lire et construire la base de données
-### 1. lire_classement() 
+## 5. Partie 1: Lire et construire la base de données
+### 5.1. lire_classement() 
 
 <div align="justify">
 
@@ -283,8 +283,46 @@ Après avoir simulé tous les matchs et mis à jour le classement pour chaque ma
 </div>
 
 
- ### 8. ecrire_classement(classement) /4
- Cette fonction écrit le classement final dans un fichier text (classement_fianl.txt). On veut que vous respectiez le format classement2019.txt
+### 8. ecrire_classement(classement)
+
+<div align="justify">
+
+La fonction `ecrire_classement` a pour objectif de sauvegarder le classement final des équipes dans un fichier texte, en l'occurrence "classement_final.txt". Pour assurer la cohérence et la lisibilité des données, il est essentiel que le format de sortie respecte celui du fichier "classement2019.txt".
+
+La structure du fichier "classement_final.txt" doit être organisée de manière à lister chaque division, suivie par les équipes de cette division classées par ordre décroissant selon leurs points. 
+
+Le format du classement doit suivre le modèle suivant:
+
+```
+            ABV MJ  V   D   DP  PTS VRP BP  BC  DIFF
+Tampa_Bay   T-B 52  39  11  2   80  35  205 146 +59
+Toronto     TOR 51  31  17  3   65  31  179 145 +34
+Montreal    MTL 53  29  18  6   64  27  160 155 +5
+Boston      BOS 52  28  17  7   63  27  149 135 +14
+Buffalo     BUF 51  25  20  6   56  22  148 156 -8
+Florida     FLA 50  21  21  8   50  19  156 175 -19
+Detroit     DET 53  21  25  7   49  19  150 174 -24
+Ottawa      OTT 52  19  28  5   43  19  159 194 -35
+```
+
+Chaque ligne après l'en-tête représente une équipe, avec des détails:
+  - Nom complet
+  - Abréviation
+  - Nombre de matchs joués (MJ)
+  - Nombre de victoires (V),
+  - Nombre de défaites (D),
+  - Nombre de défaites en prolongation (DP),
+  - Nombre de points totaux (PTS),
+  - Nombre de victoires en temps régulier ou en prolongation (VRP),
+  - Nombre de buts marqués (BP),
+  - Nombre de buts concédés (BC)
+  - La différence de buts (DIFF).
+
+- **Paramètre :**
+  - `classement`: Un dictionnaire de dictionnaires représentant le classement final des équipes par division.
+
+</div>
+
 
 
  ## 8. Barème /100 <a name="bareme"></a>
