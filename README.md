@@ -14,7 +14,7 @@
 - [Barème](#bareme)
 - [Annexe: Guide et normes de codage](#annexe)
 
-:alarm_clock: [Date de remise le dimanche 15 octobre à 23h59](https://www.timeanddate.com/countdown/generic?iso=20231015T235959&p0=165&font=cursive)
+:alarm_clock: [[Date de remise le dimanche 6 novembre à 23h59](https://www.timeanddate.com/countdown/generic?iso=20231106T235959&p0=165&font=cursive)
 
 ## Directives particulières <a name="directives"></a>
 * Respecter [guide de codage](https://github.com/INF1007-Gabarits/Guide-codage-python) et les normes pep8;
