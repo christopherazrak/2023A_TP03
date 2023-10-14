@@ -109,7 +109,7 @@ L'objectif de ce laboratoire est de simuler la fin de la saison 2019 de la Ligue
   - Un dictionnaire dont les clés sont les noms des divisions et les valeurs sont des dictionnaires.
   - Chaque sous-dictionnaire correspond à une équipe et contient des paires clé-valeur pour différentes informations sur l'équipe.
 
-- **Exemple de format de retour :**
+- **Exemple:**
 ```python
  { 
    'NOM DIVISION': {
@@ -142,7 +142,7 @@ La première ligne du fichier `matchs2019.txt` indique le nombre total de matchs
   - Le premier acronyme de la sous-liste désigne l'équipe visiteuse.
   - Le deuxième acronyme de la sous-liste représente l'équipe à domicile.
 
-- **Exemple de format de retour :**
+- **Exemple:**
 ```python
     [['ANA', 'TOR'], ['L-A', 'NYR'], ...]
 ```
@@ -167,7 +167,7 @@ Dans le processus de recherche d'une équipe à partir de son acronyme au sein d
 - **Type de retour:**
   - Un tuple contenant deux chaînes de caractères : le nom de la division et le nom de l'équipe.
 
-- **Exemple de format de retour :**
+- **Exemple:**
 ```python
 classement = {
     "Pacific Division": {
@@ -383,7 +383,7 @@ print(nhl_df)
 ```
 </div>
 
-### 6.1. df_extraite_divison(df, division)
+### 6.2. df_extraite_divison(df, division)
 
 <div align="justify">
 
@@ -401,13 +401,16 @@ La fonction `df_extraite_divison` a pour but d'extraire et de retourner un DataF
   - Filtrer les données avec Pandas : [Lien](https://pandas.pydata.org/docs/user_guide/indexing.html)
   - Supprimer une colonne avec Pandas : [Lien](https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.drop.html)
 
-```python
-for div in division:
-    print(df_extraite_divison(nhl_df, div))
-    print("\n")
-```
+</div>
 
-```
+- **Exemple:**
+  ```python
+  for div in division:
+      print(df_extraite_divison(nhl_df, div))
+      print("\n")
+  ```
+
+  ```
                ABV  MJ   V   D  DP  PTS  VRP   BP   BC  DIFF
     Buffalo    BUF  51  25  20   6   56   22  148  156    -8
     Toronto    TOR  51  31  17   3   65   31  179  145    34
@@ -449,7 +452,88 @@ for div in division:
     Vegas        VGK  54  29  21   4   62   28  160  148    12
     Edmonton     EDM  52  23  24   5   51   20  151  172   -21
     Anaheim      ANA  52  21  22   9   51   18  123  162   -39
-```
+  ```
+
+### 6.3. df_sort_type(df, column, ascending):
+
+<div align="justify">
+  
+La fonction `df_sort_type` permet de trier un DataFrame selon une colonne spécifique. La direction du tri (croissant ou décroissant) est également spécifiée en tant que paramètre.
+
+- **Paramètre:**
+  - `df`: DataFrame Pandas qui contient les informations de toutes les équipes de la ligue.
+  - `column`: Une chaîne de caractères représentant le nom de la colonne selon laquelle le DataFrame doit être trié.
+  - `ascending`: Un booléen qui détermine la direction du tri. Si `True`, le tri est effectué dans l'ordre croissant; si `False`, le tri est effectué dans l'ordre décroissant. Par défaut, la valeur est `True`.
+
+- **Type de retour:**
+  - Un DataFrame Pandas trié selon la colonne spécifiée et dans la direction d'ordre donnée.
+
+
+- **Lien utile :** 
+  - Trier un DataFrame avec Pandas: [Lien](https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.sort_values.html)
+</div>
+
+- **Exemple:**
+  ```python
+  nhl_df_sort_by_pts = df_sort_type(nhl_df, "PTS", False)
+  print(nhl_df_sort_by_pts)
+  print("\n")
+  ```
+  
+  ```
+                  ABV  MJ   V   D  DP  PTS  VRP   BP   BC  DIFF           DIV
+    Tampa_Bay     T-B  52  39  11   2   80   35  205  146    59      Atlantic
+    Calgary       CAL  53  34  14   5   73   34  197  152    45       Pacific
+    Winnipeg      WIN  52  34  16   2   70   32  185  146    39       Central
+    San-Jose      SJS  53  30  16   7   67   30  190  169    21       Pacific
+    NY_Islanders  NYI  51  30  15   6   66   28  151  125    26  Metropolitan
+    Nashville     NAS  54  31  19   4   66   30  166  139    27       Central
+    Toronto       TOR  51  31  17   3   65   31  179  145    34      Atlantic
+    Montreal      MTL  53  29  18   6   64   27  160  155     5      Atlantic
+    Boston        BOS  52  28  17   7   63   27  149  135    14      Atlantic
+    Vegas         VGK  54  29  21   4   62   28  160  148    12       Pacific
+    Washington    WAS  52  28  18   6   62   25  175  166     9  Metropolitan
+    Pittsburgh    PIT  52  28  18   6   62   27  183  160    23  Metropolitan
+    Columbus      CLB  51  28  20   3   59   28  163  159     4  Metropolitan
+    Dallas        DAL  52  27  21   4   58   27  133  130     3       Central
+    Buffalo       BUF  51  25  20   6   56   22  148  156    -8      Atlantic
+    Minnesota     MIN  52  26  22   4   56   25  146  149    -3       Central
+    Carolina      CAR  52  25  21   6   56   24  148  155    -7  Metropolitan
+    Vancouver     VAN  52  24  22   6   54   23  152  162   -10       Pacific
+    Colorado      COL  51  22  21   8   52   22  170  167     3       Central
+    Philadelphia  PHI  52  23  23   6   52   21  151  176   -25  Metropolitan
+    St-Louis      STL  50  23  22   5   51   23  143  151    -8       Central
+    NY_Rangers    NYR  51  22  22   7   51   17  145  171   -26  Metropolitan
+    Arizona       ARI  51  23  23   5   51   21  134  145   -11       Pacific
+    Edmonton      EDM  52  23  24   5   51   20  151  172   -21       Pacific
+    Anaheim       ANA  52  21  22   9   51   18  123  162   -39       Pacific
+    Florida       FLA  50  21  21   8   50   19  156  175   -19      Atlantic
+    Chicago       CHI  53  20  24   9   49   19  167  196   -29       Central
+    Detroit       DET  53  21  25   7   49   19  150  174   -24      Atlantic
+    New_Jersey    N-J  51  20  24   7   47   19  152  173   -21  Metropolitan
+    Los-Angeles   L-A  51  20  27   4   44   19  116  154   -38       Pacific
+    Ottawa        OTT  52  19  28   5   43   19  159  194   -35      Atlantic
+  ```
+
+  ```python
+  nhl_div_df = df_extraite_divison(nhl_df, "Atlantic")
+  nhl_div_df_sort_by_v = df_sort_type(nhl_div_df, "V", True)
+  print(nhl_div_df_sort_by_v)
+  ```    
+  
+  ```    
+               ABV  MJ   V   D  DP  PTS  VRP   BP   BC  DIFF
+    Ottawa     OTT  52  19  28   5   43   19  159  194   -35
+    Detroit    DET  53  21  25   7   49   19  150  174   -24
+    Florida    FLA  50  21  21   8   50   19  156  175   -19
+    Buffalo    BUF  51  25  20   6   56   22  148  156    -8
+    Boston     BOS  52  28  17   7   63   27  149  135    14
+    Montreal   MTL  53  29  18   6   64   27  160  155     5
+    Toronto    TOR  51  31  17   3   65   31  179  145    34
+    Tampa_Bay  T-B  52  39  11   2   80   35  205  146    59
+  ```
+
+
 
 ## 7. Partie 3: Analyse des données
 
