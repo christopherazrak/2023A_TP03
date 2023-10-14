@@ -730,7 +730,7 @@ Cette fonction affiche un graphique circulaire (ou "camembert") représentant le
 
 - **Paramètre:**
   - `df`: DataFrame Pandas qui contient les informations de toutes les équipes de la ligue.
-  - `criteria : Le critère de tri, tel que "PTS" pour les points, "V" pour les victoires, "BP" pour les buts marqués, etc.
+  - `criteria` : Le critère de tri, tel que "PTS" pour les points, "V" pour les victoires, "BP" pour les buts marqués, etc.
   - `ascending`:  Direction du tri. Si `True`, le tri est ascendant, sinon il est descendant.
     
 - **Lien utile :** 
