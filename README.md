@@ -89,8 +89,8 @@ L'objectif de ce laboratoire est de simuler la fin de la saison 2019 de la Ligue
 <div align="justify">À la fin de la saison, les équipes sont classées en fonction de leurs points. En cas d'égalité, la statistique VRP est utilisée comme critère de départage. Les trois meilleures équipes de chaque division sont automatiquement qualifiées, et les deux places restantes (wildcards) sont attribuées aux meilleures équipes non encore qualifiées. Ces wildcards peuvent venir de la même division. On applique le même protocole de sélection dans l’autre conférence et on obtient ainsi la liste des 16 équipes qualifiées.</div>
 
 
-## Partie 1: Lire et construire la base de données
-### 1. lire_classement() 
+## 5. Partie 1: Lire et construire la base de données
+### 5.1. lire_classement() 
 
 <div align="justify">
 
@@ -109,7 +109,7 @@ L'objectif de ce laboratoire est de simuler la fin de la saison 2019 de la Ligue
   - Un dictionnaire dont les clés sont les noms des divisions et les valeurs sont des dictionnaires.
   - Chaque sous-dictionnaire correspond à une équipe et contient des paires clé-valeur pour différentes informations sur l'équipe.
 
-- **Exemple de format de retour :**
+- **Exemple:**
 ```python
  { 
    'NOM DIVISION': {
@@ -127,7 +127,7 @@ L'objectif de ce laboratoire est de simuler la fin de la saison 2019 de la Ligue
  }
 ```
 
- ### 2. lire_match() /3
+ ### 5.2. lire_match()
 <div align="justify">
   
 Cette fonction est chargée de lire les informations relatives aux matchs à partir du fichier `matchs2019.txt`.</div>
@@ -142,13 +142,13 @@ La première ligne du fichier `matchs2019.txt` indique le nombre total de matchs
   - Le premier acronyme de la sous-liste désigne l'équipe visiteuse.
   - Le deuxième acronyme de la sous-liste représente l'équipe à domicile.
 
-- **Exemple de format de retour :**
+- **Exemple:**
 ```python
     [['ANA', 'TOR'], ['L-A', 'NYR'], ...]
 ```
 
 
- ### 3. trouver_equipe_division(equipe_abv, classement) /2
+ ### 5.3. trouver_equipe_division(equipe_abv, classement)
  
  <div align="justify">
  
@@ -167,7 +167,7 @@ Dans le processus de recherche d'une équipe à partir de son acronyme au sein d
 - **Type de retour:**
   - Un tuple contenant deux chaînes de caractères : le nom de la division et le nom de l'équipe.
 
-- **Exemple de format de retour :**
+- **Exemple:**
 ```python
 classement = {
     "Pacific Division": {
@@ -184,7 +184,7 @@ resultat = trouver_equipe_division("ANA", classement)
 print(resultat)  # ("Pacific Division", "Anaheim Ducks")
 ```
  
-### 4. jouer_match(dif_vis, dif_dom) /4
+### 5.4. jouer_match(dif_vis, dif_dom)
 
 <div align="justify">
   
@@ -204,6 +204,10 @@ Les valeurs générées sont arrondies à l'entier le plus proche. Si une valeur
 Si une équipe marque plus de buts que l'autre après cette simulation, elle gagne le match en temps régulier et l'indicateur `vrp` est fixé à 1. Si les deux équipes ont le même nombre de buts, une prolongation ou une fusillade est simulée. Si le match est décidé en fusillade, l'indicateur `vrp` est fixé à 0.
 </div>
 
+<p align="center">
+    <img src="Images/img_01.svg">
+</p>
+
 - **Paramètres:**
   - `dif_vis`: Différence de buts de l'équipe visiteur sur la saison.
   - `dif_dom`: Différence de buts de l'équipe domicile sur la saison.
@@ -215,46 +219,421 @@ Si une équipe marque plus de buts que l'autre après cette simulation, elle gag
   - `but_dom`: Nombre de buts marqués par l'équipe domicile.
   - `vrp`: Indicateur de victoire en temps régulier ou en prolongation (1) ou en fusillade (0).
  
- ### 5. trier_classement(classement) /2
- À l'aide du dictionnaire classement et de l'abbréviation de l'équipe (string), trouvez et retournez le nom de l'équipe et sa division.
- 
- Pour chaque division, classer les équipes selon leurs nombres de points. classement est un dictionnaire de dictionnaires
- 
- Les points seront données si le dictionnaire est bien parcouru et si le triage a fonctionné.
- 
- ### 6. mis_a_jour_classement(equipe, stats, division, classment) /2
- Cette fonction prends en paramètres le nom de l'équipe, un dictionnaire stats, le nom de la division et le classement (dictionnaire de dictionnaires).
- 
- Le dictionnaire stats a la forme suivante:
- ```python
-    {
-        'PTS': 2,
-        'BP': 5,
-        'BC': 1,
-        'VRP': 1
-    }
- ```
+### 5.5. trier_classement(classement)
 
- Cette fonction met à jour le classement en ajoutant les données du dictionnaire stats, le nombre de victoire, défaite, ... 
- Bref, elle met à jour tous les éléments du dictionnaire classement.
+<div align="justify">
+  
+La fonction `trier_classement` organise les équipes au sein de chaque division de manière descendante selon leur nombre total de points.
 
- ### 7. simuler_rencontres(matchs, classement) /3
- Cette fonction prend en paramètres le dictionnaire de dictionnaires classement et la liste de liste matchs.
- 
- Pour chaque match, on veut connaitre le nom et la division des deux équipes impliquées. N'oubliez pas d'utiliser les fonctions créées précédemment.
- 
- Ensuite, on veut simuler la rencontre. N'oubliez pas d'utiliser les fonctions créées précédemment.
- 
- Ensuite, on veut créer les dictionnaires stats_equipe_A et stats_equipe_B. Ces dictionnaires seront utilisés dans la 
- fonction mis_a_jour_classement(). Du coup, n'oubliez pas de respecter le format demandé dans cette fonction.
- 
- Finalement, il faut que vous mettiez à jour le classement. N'oubliez pas d'utiliser les fonctions créées précédemment.
+Chaque division doit être triée indépendamment des autres. La fonction modifie directement le dictionnaire `classement` sans rien retourner. Une fois la fonction exécutée, en consultant le dictionnaire `classement`, vous devriez voir les équipes de chaque division classées de la plus performante à la moins performante, basées sur leur nombre de points.
 
- ### 8. ecrire_classement(classement) /4
- Cette fonction écrit le classement final dans un fichier text (classement_fianl.txt). On veut que vous respectiez le format classement2019.txt
+Il est important de noter que dans le cas où deux équipes ont le même nombre de points dans une division, le critère de tri supplémentaire peut être basé sur d'autres statistiques, comme le nombre de buts pour ou contre, mais cela dépendra de l'implémentation spécifique et des règles de la ligue.
+
+- **Paramètres:**
+  - `classement` (dict): Un dictionnaire de dictionnaires représentant le classement actuel des équipes par division. La structure du dictionnaire est détaillée dans les fonctions précédentes, notamment `mis_a_jour_classement`.
+
+</div>
+ 
+### 5.6. mis_a_jour_classement(equipe, stats, division, classment) 
+
+<div align="justify">
+
+La fonction `mis_a_jour_classement` met à jour les statistiques d'une équipe donnée dans un classement de division après la conclusion d'un match. Elle utilise les statistiques fournies pour augmenter le nombre de points, le nombre de buts marqués, le nombre de buts encaissés, et détermine également si la victoire a été obtenue en temps régulier ou en prolongation.
+
+- **Paramètres:**
+  - `equipe`: Le nom de l'équipe dont les statistiques doivent être mises à jour.
+  - `stats`: Un dictionnaire contenant les statistiques du match récent. Il a la structure suivante :
+     ```python
+     {
+         'PTS': int,  # Nombre de points gagnés dans le match.
+         'BP': int,  # Buts marqués par l'équipe lors du match.
+         'BC': int,  # Buts encaissés par l'équipe lors du match.
+         'VRP': int  # Valeur 1 si victoire en temps régulier ou en prolongation, 0 si en fusillade.
+     }
+     ```
+  - `division`: Le nom de la division à laquelle appartient l'équipe.
+  - `classment`: Un dictionnaire de dictionnaires représentant le classement actuel des équipes par division.
+
+</div>
 
 
- ## 8. Barème /100 <a name="bareme"></a>
+### 5.7. simuler_rencontres(matchs, classement)
+
+<div align="justify">
+  
+La fonction `simuler_rencontres` est responsable de la simulation d'une série de rencontres entre différentes équipes et de la mise à jour du classement en conséquence.
+
+Après avoir extrait le nom et la division des deux équipes impliquées dans chaque match de la liste `matchs`, la fonction simule le résultat du match en utilisant `jouer_match`. Suite à cette simulation, vous devez créer deux dictionnaires, `stats_vis` et `stats_dom`, pour contenir les statistiques de la rencontre pour chaque équipe. Ces dictionnaires doivent respecter le format suivant :
+  ```python
+  {
+      'PTS': int,  # Nombre de points gagnés dans le match.
+      'BP': int,  # Buts marqués par l'équipe lors du match.
+      'BC': int,  # Buts encaissés par l'équipe lors du match.
+      'VRP': int  # Valeur 1 si victoire en temps régulier ou en prolongation, 0 si en fusillade.
+  }
+  ```
+Ces dictionnaires sont ensuite utilisés pour mettre à jour le classement général des équipes en utilisant la fonction `mis_a_jour_classement()`.
+
+Après avoir simulé tous les matchs et mis à jour le classement pour chaque match, la fonction `trier_classement(classement)` est appelée pour s'assurer que le classement des équipes au sein de chaque division est organisé de manière descendante selon leur nombre total de points.
+
+- **Paramètres :**
+  - `matchs`: Une liste de matchs à simuler. Chaque match est représenté par une liste contenant le nom et la division des deux équipes impliquées.
+  - `classement`: Un dictionnaire de dictionnaires représentant le classement actuel des équipes par division.
+
+</div>
+
+
+### 8. ecrire_classement(classement)
+
+<div align="justify">
+
+La fonction `ecrire_classement` a pour objectif de sauvegarder le classement final des équipes dans un fichier texte, en l'occurrence "classement_final.txt". Pour assurer la cohérence et la lisibilité des données, il est essentiel que le format de sortie respecte celui du fichier "classement2019.txt".
+
+La structure du fichier "classement_final.txt" doit être organisée de manière à lister chaque division, suivie par les équipes de cette division classées par ordre décroissant selon leurs points. 
+
+Le format du classement doit suivre le modèle suivant:
+
+```
+            ABV MJ  V   D   DP  PTS VRP BP  BC  DIFF
+Tampa_Bay   T-B 52  39  11  2   80  35  205 146 +59
+Toronto     TOR 51  31  17  3   65  31  179 145 +34
+Montreal    MTL 53  29  18  6   64  27  160 155 +5
+Boston      BOS 52  28  17  7   63  27  149 135 +14
+Buffalo     BUF 51  25  20  6   56  22  148 156 -8
+Florida     FLA 50  21  21  8   50  19  156 175 -19
+Detroit     DET 53  21  25  7   49  19  150 174 -24
+Ottawa      OTT 52  19  28  5   43  19  159 194 -35
+```
+
+Chaque ligne après l'en-tête représente une équipe, avec des détails:
+  - Nom complet
+  - Abréviation
+  - Nombre de matchs joués (MJ)
+  - Nombre de victoires (V),
+  - Nombre de défaites (D),
+  - Nombre de défaites en prolongation (DP),
+  - Nombre de points totaux (PTS),
+  - Nombre de victoires en temps régulier ou en prolongation (VRP),
+  - Nombre de buts marqués (BP),
+  - Nombre de buts concédés (BC)
+  - La différence de buts (DIFF).
+
+- **Paramètre :**
+  - `classement`: Un dictionnaire de dictionnaires représentant le classement final des équipes par division.
+
+</div>
+
+## 6. Partie 2: Construire la base de données
+### 6.1. creer_df(classement)
+
+<div align="justify">
+
+La fonction `creer_df` sert à transformer un dictionnaire contenant les informations des équipes pour chaque division en un dataframe. Cette transformation est réalisée grâce à l'utilisation de la bibliothèque Pandas.
+
+- **Paramètre:**
+  - `classement` : Un dictionnaire contenant les informations des équipes pour chaque division.
+  
+
+- **Valeur de retour :**
+  - Un dataframe contenant les informations de chaque équipe.
+
+- **Lien utile :** 
+  - [Conversion d'un dictionnaire en dataframe](https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.from_dict.html)
+    
+En utilisant la fonction, vous devriez obtenir un résultat semblable à :
+
+```python
+nhl_df = creer_df(ligue_classement)
+print(nhl_df)
+```
+
+```
+                  ABV  MJ   V   D  DP  PTS  VRP   BP   BC  DIFF           DIV
+    Buffalo       BUF  51  25  20   6   56   22  148  156    -8      Atlantic
+    Toronto       TOR  51  31  17   3   65   31  179  145    34      Atlantic
+    Montreal      MTL  53  29  18   6   64   27  160  155     5      Atlantic
+    Boston        BOS  52  28  17   7   63   27  149  135    14      Atlantic
+    Detroit       DET  53  21  25   7   49   19  150  174   -24      Atlantic
+    Tampa_Bay     T-B  52  39  11   2   80   35  205  146    59      Atlantic
+    Florida       FLA  50  21  21   8   50   19  156  175   -19      Atlantic
+    Ottawa        OTT  52  19  28   5   43   19  159  194   -35      Atlantic
+    Washington    WAS  52  28  18   6   62   25  175  166     9  Metropolitan
+    Columbus      CLB  51  28  20   3   59   28  163  159     4  Metropolitan
+    NY_Islanders  NYI  51  30  15   6   66   28  151  125    26  Metropolitan
+    Pittsburgh    PIT  52  28  18   6   62   27  183  160    23  Metropolitan
+    Philadelphia  PHI  52  23  23   6   52   21  151  176   -25  Metropolitan
+    NY_Rangers    NYR  51  22  22   7   51   17  145  171   -26  Metropolitan
+    New_Jersey    N-J  51  20  24   7   47   19  152  173   -21  Metropolitan
+    Carolina      CAR  52  25  21   6   56   24  148  155    -7  Metropolitan
+    Winnipeg      WIN  52  34  16   2   70   32  185  146    39       Central
+    Colorado      COL  51  22  21   8   52   22  170  167     3       Central
+    St-Louis      STL  50  23  22   5   51   23  143  151    -8       Central
+    Dallas        DAL  52  27  21   4   58   27  133  130     3       Central
+    Minnesota     MIN  52  26  22   4   56   25  146  149    -3       Central
+    Chicago       CHI  53  20  24   9   49   19  167  196   -29       Central
+    Nashville     NAS  54  31  19   4   66   30  166  139    27       Central
+    Los-Angeles   L-A  51  20  27   4   44   19  116  154   -38       Pacific
+    Calgary       CAL  53  34  14   5   73   34  197  152    45       Pacific
+    Vancouver     VAN  52  24  22   6   54   23  152  162   -10       Pacific
+    Arizona       ARI  51  23  23   5   51   21  134  145   -11       Pacific
+    San-Jose      SJS  53  30  16   7   67   30  190  169    21       Pacific
+    Vegas         VGK  54  29  21   4   62   28  160  148    12       Pacific
+    Edmonton      EDM  52  23  24   5   51   20  151  172   -21       Pacific
+    Anaheim       ANA  52  21  22   9   51   18  123  162   -39       Pacific
+```
+</div>
+
+### 6.2. df_extraite_divison(df, division)
+
+<div align="justify">
+
+La fonction `df_extraite_divison` a pour but d'extraire et de retourner un DataFrame réduit, contenant seulement les équipes d'une division donnée. La colonne "DIV", qui indique la division des équipes, sera supprimée du DataFrame résultant pour ne pas avoir d'informations redondantes.
+
+
+- **Paramètre:**
+  - `df`: Un DataFrame Pandas qui contient les informations de toutes les équipes de la ligue. Ce DataFrame possède une colonne "DIV" qui indique la division de chaque équipe.
+  - `division`: Une chaîne de caractères représentant le nom de la division dont les équipes doivent être extraites du DataFrame original.
+
+- **Type de retour:**
+  - Un DataFrame contenant uniquement les équipes de la division spécifiée. Ce DataFrame ne possède pas la colonne "DIV".
+
+- **Lien utile :** 
+  - Filtrer les données avec Pandas : [Lien](https://pandas.pydata.org/docs/user_guide/indexing.html)
+  - Supprimer une colonne avec Pandas : [Lien](https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.drop.html)
+
+</div>
+
+- **Exemple:**
+  ```python
+  for div in division:
+      print(df_extraite_divison(nhl_df, div))
+      print("\n")
+  ```
+
+  ```
+               ABV  MJ   V   D  DP  PTS  VRP   BP   BC  DIFF
+    Buffalo    BUF  51  25  20   6   56   22  148  156    -8
+    Toronto    TOR  51  31  17   3   65   31  179  145    34
+    Montreal   MTL  53  29  18   6   64   27  160  155     5
+    Boston     BOS  52  28  17   7   63   27  149  135    14
+    Detroit    DET  53  21  25   7   49   19  150  174   -24
+    Tampa_Bay  T-B  52  39  11   2   80   35  205  146    59
+    Florida    FLA  50  21  21   8   50   19  156  175   -19
+    Ottawa     OTT  52  19  28   5   43   19  159  194   -35
+    
+    
+                  ABV  MJ   V   D  DP  PTS  VRP   BP   BC  DIFF
+    Washington    WAS  52  28  18   6   62   25  175  166     9
+    Columbus      CLB  51  28  20   3   59   28  163  159     4
+    NY_Islanders  NYI  51  30  15   6   66   28  151  125    26
+    Pittsburgh    PIT  52  28  18   6   62   27  183  160    23
+    Philadelphia  PHI  52  23  23   6   52   21  151  176   -25
+    NY_Rangers    NYR  51  22  22   7   51   17  145  171   -26
+    New_Jersey    N-J  51  20  24   7   47   19  152  173   -21
+    Carolina      CAR  52  25  21   6   56   24  148  155    -7
+    
+    
+               ABV  MJ   V   D  DP  PTS  VRP   BP   BC  DIFF
+    Winnipeg   WIN  52  34  16   2   70   32  185  146    39
+    Colorado   COL  51  22  21   8   52   22  170  167     3
+    St-Louis   STL  50  23  22   5   51   23  143  151    -8
+    Dallas     DAL  52  27  21   4   58   27  133  130     3
+    Minnesota  MIN  52  26  22   4   56   25  146  149    -3
+    Chicago    CHI  53  20  24   9   49   19  167  196   -29
+    Nashville  NAS  54  31  19   4   66   30  166  139    27
+    
+    
+                 ABV  MJ   V   D  DP  PTS  VRP   BP   BC  DIFF
+    Los-Angeles  L-A  51  20  27   4   44   19  116  154   -38
+    Calgary      CAL  53  34  14   5   73   34  197  152    45
+    Vancouver    VAN  52  24  22   6   54   23  152  162   -10
+    Arizona      ARI  51  23  23   5   51   21  134  145   -11
+    San-Jose     SJS  53  30  16   7   67   30  190  169    21
+    Vegas        VGK  54  29  21   4   62   28  160  148    12
+    Edmonton     EDM  52  23  24   5   51   20  151  172   -21
+    Anaheim      ANA  52  21  22   9   51   18  123  162   -39
+  ```
+
+### 6.3. df_sort_type(df, column, ascending):
+
+<div align="justify">
+  
+La fonction `df_sort_type` permet de trier un DataFrame selon une colonne spécifique. La direction du tri (croissant ou décroissant) est également spécifiée en tant que paramètre.
+
+- **Paramètre:**
+  - `df`: DataFrame Pandas qui contient les informations de toutes les équipes de la ligue.
+  - `column`: Une chaîne de caractères représentant le nom de la colonne selon laquelle le DataFrame doit être trié.
+  - `ascending`: Un booléen qui détermine la direction du tri. Si `True`, le tri est effectué dans l'ordre croissant; si `False`, le tri est effectué dans l'ordre décroissant. Par défaut, la valeur est `True`.
+
+- **Type de retour:**
+  - Un DataFrame Pandas trié selon la colonne spécifiée et dans la direction d'ordre donnée.
+
+
+- **Lien utile :** 
+  - Trier un DataFrame avec Pandas: [Lien](https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.sort_values.html)
+</div>
+
+- **Exemple:**
+  ```python
+  nhl_df_sort_by_pts = df_sort_type(nhl_df, "PTS", False)
+  print(nhl_df_sort_by_pts)
+  print("\n")
+  ```
+  
+  ```
+                  ABV  MJ   V   D  DP  PTS  VRP   BP   BC  DIFF           DIV
+    Tampa_Bay     T-B  52  39  11   2   80   35  205  146    59      Atlantic
+    Calgary       CAL  53  34  14   5   73   34  197  152    45       Pacific
+    Winnipeg      WIN  52  34  16   2   70   32  185  146    39       Central
+    San-Jose      SJS  53  30  16   7   67   30  190  169    21       Pacific
+    NY_Islanders  NYI  51  30  15   6   66   28  151  125    26  Metropolitan
+    Nashville     NAS  54  31  19   4   66   30  166  139    27       Central
+    Toronto       TOR  51  31  17   3   65   31  179  145    34      Atlantic
+    Montreal      MTL  53  29  18   6   64   27  160  155     5      Atlantic
+    Boston        BOS  52  28  17   7   63   27  149  135    14      Atlantic
+    Vegas         VGK  54  29  21   4   62   28  160  148    12       Pacific
+    Washington    WAS  52  28  18   6   62   25  175  166     9  Metropolitan
+    Pittsburgh    PIT  52  28  18   6   62   27  183  160    23  Metropolitan
+    Columbus      CLB  51  28  20   3   59   28  163  159     4  Metropolitan
+    Dallas        DAL  52  27  21   4   58   27  133  130     3       Central
+    Buffalo       BUF  51  25  20   6   56   22  148  156    -8      Atlantic
+    Minnesota     MIN  52  26  22   4   56   25  146  149    -3       Central
+    Carolina      CAR  52  25  21   6   56   24  148  155    -7  Metropolitan
+    Vancouver     VAN  52  24  22   6   54   23  152  162   -10       Pacific
+    Colorado      COL  51  22  21   8   52   22  170  167     3       Central
+    Philadelphia  PHI  52  23  23   6   52   21  151  176   -25  Metropolitan
+    St-Louis      STL  50  23  22   5   51   23  143  151    -8       Central
+    NY_Rangers    NYR  51  22  22   7   51   17  145  171   -26  Metropolitan
+    Arizona       ARI  51  23  23   5   51   21  134  145   -11       Pacific
+    Edmonton      EDM  52  23  24   5   51   20  151  172   -21       Pacific
+    Anaheim       ANA  52  21  22   9   51   18  123  162   -39       Pacific
+    Florida       FLA  50  21  21   8   50   19  156  175   -19      Atlantic
+    Chicago       CHI  53  20  24   9   49   19  167  196   -29       Central
+    Detroit       DET  53  21  25   7   49   19  150  174   -24      Atlantic
+    New_Jersey    N-J  51  20  24   7   47   19  152  173   -21  Metropolitan
+    Los-Angeles   L-A  51  20  27   4   44   19  116  154   -38       Pacific
+    Ottawa        OTT  52  19  28   5   43   19  159  194   -35      Atlantic
+  ```
+
+  ```python
+  nhl_div_df = df_extraite_divison(nhl_df, "Atlantic")
+  nhl_div_df_sort_by_v = df_sort_type(nhl_div_df, "V", True)
+  print(nhl_div_df_sort_by_v)
+  ```    
+  
+  ```    
+               ABV  MJ   V   D  DP  PTS  VRP   BP   BC  DIFF
+    Ottawa     OTT  52  19  28   5   43   19  159  194   -35
+    Detroit    DET  53  21  25   7   49   19  150  174   -24
+    Florida    FLA  50  21  21   8   50   19  156  175   -19
+    Buffalo    BUF  51  25  20   6   56   22  148  156    -8
+    Boston     BOS  52  28  17   7   63   27  149  135    14
+    Montreal   MTL  53  29  18   6   64   27  160  155     5
+    Toronto    TOR  51  31  17   3   65   31  179  145    34
+    Tampa_Bay  T-B  52  39  11   2   80   35  205  146    59
+  ```
+
+
+### 6.4. df_summary_inf(df):
+
+<div align="justify">
+  
+La fonction `df_summary_inf` prend en entrée un dataframe représentant les statistiques des équipes d'une ligue de hockey. Elle affiche ensuite les équipes qui détiennent le maximum pour chaque statistique pertinente (par exemple, victoires, défaites, buts marqués) au sein de chaque division ainsi que pour l'ensemble de la ligue.
+
+- **Paramètre:**
+  - `df`: DataFrame Pandas qui contient les informations de toutes les équipes de la ligue.
+</div>
+
+- **Exemple:**
+  ```python
+  df_summary_inf(nhl_df)
+  ```
+  
+  ```
+    Stats division Atlantic:
+    
+    	 l'équipe qui a le plus de victoire est Tampa_Bay avec 39 victoire
+    
+    	 l'équipe qui a le plus de defaite est Ottawa avec 28 defaite
+    
+    	 l'équipe qui a le plus de defaite par prolongation est Florida avec 8 defaite par prolongation
+    
+    	 l'équipe qui a le plus de points est Tampa_Bay avec 80 points
+    
+    	 l'équipe qui a le plus de buts marquer est Tampa_Bay avec 205 buts marquer
+    
+    	 l'équipe qui a le plus de buts encaisser est Ottawa avec 194 buts encaisser
+    
+    	 l'équipe qui a le plus de difference de buts est Tampa_Bay avec 59 difference de buts
+    
+    Stats division Metropolitan:
+    
+    	 l'équipe qui a le plus de victoire est NY_Islanders avec 30 victoire
+    
+    	 l'équipe qui a le plus de defaite est New_Jersey avec 24 defaite
+    
+    	 l'équipe qui a le plus de defaite par prolongation est NY_Rangers avec 7 defaite par prolongation
+    
+    	 l'équipe qui a le plus de points est NY_Islanders avec 66 points
+    
+    	 l'équipe qui a le plus de buts marquer est Pittsburgh avec 183 buts marquer
+    
+    	 l'équipe qui a le plus de buts encaisser est Philadelphia avec 176 buts encaisser
+    
+    	 l'équipe qui a le plus de difference de buts est NY_Islanders avec 26 difference de buts
+    
+    Stats division Central:
+    
+    	 l'équipe qui a le plus de victoire est Winnipeg avec 34 victoire
+    
+    	 l'équipe qui a le plus de defaite est Chicago avec 24 defaite
+    
+    	 l'équipe qui a le plus de defaite par prolongation est Chicago avec 9 defaite par prolongation
+    
+    	 l'équipe qui a le plus de points est Winnipeg avec 70 points
+    
+    	 l'équipe qui a le plus de buts marquer est Winnipeg avec 185 buts marquer
+    
+    	 l'équipe qui a le plus de buts encaisser est Chicago avec 196 buts encaisser
+    
+    	 l'équipe qui a le plus de difference de buts est Winnipeg avec 39 difference de buts
+    
+    Stats division Pacific:
+    
+    	 l'équipe qui a le plus de victoire est Calgary avec 34 victoire
+    
+    	 l'équipe qui a le plus de defaite est Los-Angeles avec 27 defaite
+    
+    	 l'équipe qui a le plus de defaite par prolongation est Anaheim avec 9 defaite par prolongation
+    
+    	 l'équipe qui a le plus de points est Calgary avec 73 points
+    
+    	 l'équipe qui a le plus de buts marquer est Calgary avec 197 buts marquer
+    
+    	 l'équipe qui a le plus de buts encaisser est Edmonton avec 172 buts encaisser
+    
+    	 l'équipe qui a le plus de difference de buts est Calgary avec 45 difference de buts
+    
+    Stats ligue:
+    
+    	 l'équipe qui a le plus de victoire est Tampa_Bay avec 39 victoire
+    
+    	 l'équipe qui a le plus de defaite est Ottawa avec 28 defaite
+    
+    	 l'équipe qui a le plus de defaite par prolongation est Anaheim avec 9 defaite par prolongation
+    
+    	 l'équipe qui a le plus de points est Tampa_Bay avec 80 points
+    
+    	 l'équipe qui a le plus de buts marquer est Tampa_Bay avec 205 buts marquer
+    
+    	 l'équipe qui a le plus de buts encaisser est Chicago avec 196 buts encaisser
+    
+    	 l'équipe qui a le plus de difference de buts est Tampa_Bay avec 59 difference de buts
+  ```
+
+## 7. Partie 3: Analyse des données
+
+## 8. Barème /100 <a name="bareme"></a>
 
 |**Nom des fonctions**|**Nombre de points attribuer**|
 | :- | :- |
