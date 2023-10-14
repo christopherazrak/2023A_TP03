@@ -204,6 +204,10 @@ Les valeurs générées sont arrondies à l'entier le plus proche. Si une valeur
 Si une équipe marque plus de buts que l'autre après cette simulation, elle gagne le match en temps régulier et l'indicateur `vrp` est fixé à 1. Si les deux équipes ont le même nombre de buts, une prolongation ou une fusillade est simulée. Si le match est décidé en fusillade, l'indicateur `vrp` est fixé à 0.
 </div>
 
+<p align="center">
+    <img src="Images/img_01.svg">
+</p>
+
 - **Paramètres:**
   - `dif_vis`: Différence de buts de l'équipe visiteur sur la saison.
   - `dif_dom`: Différence de buts de l'équipe domicile sur la saison.
