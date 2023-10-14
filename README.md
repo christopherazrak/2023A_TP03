@@ -184,35 +184,27 @@ resultat = trouver_equipe_division("ANA", classement)
 print(resultat)  # ("Pacific Division", "Anaheim Ducks")
 ```
  
- ### 4. simulation(diffA, diffB) /4
- Cette fonction prend en paramètre le différentiel de buts de l'équipe A et de l'équipe B. 
- 
- Cette fonction a pour but de simuler une rencontre entre l'equipe A et B. N'oubliez pas que l'équipe à domicile est l'équipe B et l'équipe A est l'équipe visitrice
+### 4. simulation(dif_vis, dif_dom) /4
 
- Pour cela, nous allons dire que la moyenne de base de buts est de 3. Cependant, nous allons modifier cette moyenne en fonction
- des performances d'une équipe et en fonction de si elle joue à domicile. 
- 
- La première étape est de calculer diff_dom et diff_vis. diff_dom est la différence entre le différence de l'équipe à domicile et de l'équipe à l'extérieur divisé par la moyenne de 3 buts.
- diff_vis est l'inverse de diff_dom. Par exemple, si l'équipe A a un différenciel de +33 et l'équipe B un différenciel de -3, diff_dom sera un désavantage de -12 et diff_vis sera un avantage de +12.
- 
- La deuxième étape est de calculer le nombre de buts de l'équipe à domicile. Pour cela , nous allons utiliser normalvariate de random. Cette fonction
- prend deux paramètres mu et sigma. Mu sera calculer de la sorte 3 + (diff_dom/100) et sigma sera de 1.5
- 
- La troisième étape est de calculer le nombre de buts de l'équipe visitrice. Pour cela , nous allons aussi utiliser normalvariate de random.
- Mu sera calculer de la sorte 3 + (diff_vis/100) -0.2 et sigma sera de 1.5. Le -0.2 de l'équipe visitrice est ajouté pour désavantager l'équipe visitrice.
- 
- Les valeurs générées par cette fonction aléatoire sont des réels mais nous voulons les ramener à des entiers.  Vous devez donc arrondir les valeurs générées.
- Exemples : 3.4567 donne 3,  2.7654 donne 3, 0.4325 donne 0  et -1.7635 donne 0.
- 
- Finalement, il faut décider qui a remporté la partie.
- 
- Si l'équipe A a marqué plus de buts que l'équipe B, l'équipe A a gagné. Une victoire donne 2 points et une défaite 0.
- 
- Si l'équipe B a marqué plus de buts que l'équipe A, l'équipe B a gagné.
- 
- Si les deux équipes ont marqué le même nombre de buts, on utilise une valeur aléatoire pour savoir si le match s'est décidé en prolongation
- ou en fusillades. Dans ces deux cas, l'équipe perdante a 1 point. Dans le cas d'une victoire en fusillade, le vrp est de 0. 
- 
+<div align="justify">
+  
+La fonction `simulation` modélise le résultat d'un match entre deux équipes en se basant principalement sur la différence de buts de chaque équipe sur la saison. La différence de buts est un indicateur de la performance de l'équipe, reflétant la capacité offensive et défensive de celle-ci.
+
+Pour déterminer le nombre de buts marqués par chaque équipe lors du match simulé, la fonction ajuste un nombre moyen de buts en fonction de la différence de buts de chaque équipe. Une équipe ayant une différence de buts plus élevée serait avantagée pour marquer plus de buts. Pour générer le nombre de buts marqués, la fonction utilise une distribution normale. Cela signifie que le nombre de buts est probablement proche de la moyenne, mais des variations sont possibles en fonction de l'écart-type.
+
+Après avoir déterminé le nombre de buts de chaque équipe, la fonction vérifie lequel a marqué le plus. Si une équipe a plus de buts que l'autre, elle est déclarée gagnante en temps régulier. En cas d'égalité, une décision est prise en utilisant une fonction aléatoire pour déterminer si le match se termine par une fusillade ou une prolongation.
+</div>
+
+- **Paramètres:**
+  - `dif_vis`: Différence de buts de l'équipe visiteur sur la saison.
+  - `dif_dom`: Différence de buts de l'équipe domicile sur la saison.
+    
+- **Type de retour:**
+  - `pts_vis`: Points gagnés par l'équipe visiteur.
+  - `pts_dom`: Points gagnés par l'équipe domicile.
+  - `but_vis`: Nombre de buts marqués par l'équipe visiteur.
+  - `but_dom`: Nombre de buts marqués par l'équipe domicile.
+  - `vrp`: Indicateur de victoire en temps régulier ou en prolongation (1) ou en fusillade (0).
  
  ### 5. trier_classement(classement) /2
  À l'aide du dictionnaire classement et de l'abbréviation de l'équipe (string), trouvez et retournez le nom de l'équipe et sa division.
