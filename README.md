@@ -645,19 +645,26 @@ Cette fonction affiche un graphique visualisant le classement des équipes au se
   ```python
   df_summary_divison(nhl_df,"PTS", False)
   ```
-  ![png](Images/output_6_0.png)
+
+  <p align="center">
+  <img src="Images/output_6_0.png">
+  </p>
   
   ```python
   df_summary_divison(nhl_df,"V", False)
   ```
-  
-  ![png](Images/output_7_0.png)
+
+  <p align="center">
+  <img src="Images/output_7_0.png">
+  </p>
   
   ```python
   df_summary_divison(nhl_df,"BP", False)
   ```
-  
-  ![png](Images/output_8_0.png)
+
+  <p align="center">
+  <img src="Images/output_8_0.png">
+  </p>
 
 
 ### 7.2. df_summary_league(df, criteria, ascending):
@@ -674,7 +681,10 @@ Cette fonction génère un graphique illustrant le classement de toutes les équ
   ```python    
   df_summary_league(nhl_df,"PTS", False)
   ```
-  ![png](Images/output_9_0.png)
+
+  <p align="center">
+  <img src="Images/output_9_0.png">
+  </p>
   
   
   
@@ -682,8 +692,9 @@ Cette fonction génère un graphique illustrant le classement de toutes les équ
   df_summary_league(nhl_df,"V", False)
   ```
   
-  
-  ![png](Images/output_10_0.png)
+  <p align="center">
+  <img src="Images/output_10_0.png">
+  </p>
   
   
   
@@ -691,8 +702,9 @@ Cette fonction génère un graphique illustrant le classement de toutes les équ
   df_summary_league(nhl_df,"DIFF", False)
   ```
   
-  
-  ![png](Images/output_11_0.png)
+  <p align="center">
+  <img src="Images/output_11_0.png">
+  </p>
   
   
   
@@ -700,8 +712,9 @@ Cette fonction génère un graphique illustrant le classement de toutes les équ
   df_summary_league(nhl_df,"DIFF", True)
   ```
   
-  
-  ![png](Images/output_12_0.png)
+  <p align="center">
+  <img src="Images/output_12_0.png">
+  </p>
 
 
 ### 7.3. df_secteur_div(df, type_data, ascending):
@@ -719,15 +732,25 @@ Cette fonction affiche un graphique circulaire (ou "camembert") représentant le
   df_secteur_div(nhl_df, "PTS", False)
   df_secteur_div(nhl_df, "PTS", True)
   ```
-  ![png](Images/output_13_0.png)
-  ![png](Images/output_14_0.png)
+  <p align="center">
+  <img src="Images/output_13_0.png"> 
+  </p>
+
+  <p align="center">
+  <img src="Images/output_14_0.png">
+  </p>
   
   ```python
   df_secteur_div(nhl_df, "V", False)
   df_secteur_div(nhl_df, "V", True)
   ```
-  ![png](Images/output_15_0.png)
-  ![png](Images/output_16_0.png)
+  <p align="center">
+  <img src="Images/output_15_0.png"> 
+  </p>
+
+  <p align="center">
+    <img src="Images/output_16_0.png">
+  </p>
 
   
 ## 8. Barème /100 <a name="bareme"></a>
