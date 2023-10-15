@@ -70,7 +70,7 @@ L'objectif de ce laboratoire est de simuler la fin de la saison 2019 de la Ligue
 
 <div align="justify">
   
-- Les résultats des matchs sont déterminés aléatoirement avec la fonction `md_randnormal()`. Cette fonction génère des nombres suivant une distribution normale basée sur une moyenne donnée, permettant d'avantager une équipe par rapport à une autre selon leurs performances.
+- Les résultats des matchs sont déterminés aléatoirement avec la fonction `normalvariate()`. Cette fonction génère des nombres suivant une distribution normale basée sur une moyenne donnée, permettant d'avantager une équipe par rapport à une autre selon leurs performances.
 - L'avantage du terrain sera également pris en compte pour l'équipe jouant à domicile.
 - La conclusion de chaque match (temps règlementaire, prolongation ou tirs de barrage) est déterminée aléatoirement, influençant les points accordés aux équipes.</div>
 
