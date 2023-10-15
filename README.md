@@ -6,7 +6,7 @@
 - [Directives particulières](#directives)
 - [Introduction](#Introduction)
 - [Objectifs du laboratoire](#Objectif)
-- [Description du problème ](#Description)
+- [Description du problème](#Description)
 - [Déroulement d'une saison de la LNH](#saison)
 - [Partie 1: Lire et construire la base de données](#part1)
 - [Partie 2: Construire la base de données](#part2)
