@@ -4,13 +4,13 @@
 
 # TP03 : Librairies scientifiques et graphiques
 - [Directives particulières](#directives)
-- [Introduction](#Introduction)
-- [Objectifs](#Objectif)
-- [Description: La dynamique proie-prédateur](#Description)
-- [Déroulement de la simulation](#simulation)
-- [Module animal](#animal)
-- [Module grille animaux](#animaux)
-- [Module simulation](#animaux)
+- [Introduction](#introduction)
+- [Objectifs du laboratoire](#objectif)
+- [Description du problème](#description)
+- [Déroulement d'une saison de la LNH](#saison)
+- [Partie 1: Lire et construire la base de données](#part1)
+- [Partie 2: Construire la base de données](#part2)
+- [Partie 3: Analyse des données](#part3)
 - [Barème](#bareme)
 - [Annexe: Guide et normes de codage](#annexe)
 
@@ -21,12 +21,12 @@
 * Noms de variables et fonctions adéquats (concis, compréhensibles);  
 * Pas de librairies externes autres que celles déjà importées;
 
-## 1. Introduction
+## 1. Introduction <a name="introduction"></a>
 <div align="justify">
 L’analyse des données fait partie des disciplines les plus prisées de nos jours. Outil stratégique au sein des organisations, elle permet entre autres de mieux comprendre des événements qui se produisent avec les facteurs qui les favorisent, ou encore de mesurer l’impact d’une opération ou d’une politique grâce à des indicateurs de performance.
 </div>
 
-## 2. Objectifs du laboratoire
+## 2. Objectifs du laboratoire <a name="objectif"></a>
 
 <div align="justify">
   
@@ -37,7 +37,7 @@ L’analyse des données fait partie des disciplines les plus prisées de nos jo
 - **Analyse avec les bibliothèques scientifiques** : Exploiter des bibliothèques telles que pandas, numpy, matplotlib et autres pour effectuer une analyse complète des données.
 </div>
 
-## 3. Description du problème: 
+## 3. Description du problème <a name="description"></a>
 
 <div align="justify">
   
@@ -76,7 +76,7 @@ L'objectif de ce laboratoire est de simuler la fin de la saison 2019 de la Ligue
 
 <div align="justify">Une fois tous les matchs simulés, le classement des équipes est mis à jour. Le processus est répété plusieurs millions de fois pour obtenir la probabilité de qualification aux séries éliminatoires pour chaque équipe.</div>
 
-## 4. Déroulement d'une saison de la LNH
+## 4. Déroulement d'une saison de la LNH <a name="saison"></a>
 
 <div align="justify"> La LNH se compose de 31 équipes réparties en 4 divisions. Deux divisions (Atlantique et Métropolitaine) constituent la conférence de l'Est, tandis que les deux autres (Centrale et Pacifique) forment la conférence de l'Ouest. Chaque équipe joue 82 matchs lors de la saison régulière, et les points sont attribués selon le résultat du match:</div>
 
@@ -89,8 +89,8 @@ L'objectif de ce laboratoire est de simuler la fin de la saison 2019 de la Ligue
 <div align="justify">À la fin de la saison, les équipes sont classées en fonction de leurs points. En cas d'égalité, la statistique VRP est utilisée comme critère de départage. Les trois meilleures équipes de chaque division sont automatiquement qualifiées, et les deux places restantes (wildcards) sont attribuées aux meilleures équipes non encore qualifiées. Ces wildcards peuvent venir de la même division. On applique le même protocole de sélection dans l’autre conférence et on obtient ainsi la liste des 16 équipes qualifiées.</div>
 
 
-## 5. Partie 1: Lire et construire la base de données
-### 5.1. lire_classement() 
+## 5. Partie 1: Lire et construire la base de données <a name="part1"></a>
+### 5.1. lire_classement() / 5
 
 <div align="justify">
 
@@ -127,7 +127,7 @@ L'objectif de ce laboratoire est de simuler la fin de la saison 2019 de la Ligue
  }
 ```
 
- ### 5.2. lire_match()
+ ### 5.2. lire_match() / 3 
 <div align="justify">
   
 Cette fonction est chargée de lire les informations relatives aux matchs à partir du fichier `matchs2019.txt`.</div>
@@ -148,7 +148,7 @@ La fonction parcourt chaque ligne du fichier pour identifier les deux équipes q
 ```
 
 
- ### 5.3. trouver_equipe_division(equipe_abv, classement)
+ ### 5.3. trouver_equipe_division(equipe_abv, classement) / 2
  
  <div align="justify">
  
@@ -184,7 +184,7 @@ resultat = trouver_equipe_division("ANA", classement)
 print(resultat)  # ("Pacific Division", "Anaheim Ducks")
 ```
  
-### 5.4. jouer_match(dif_vis, dif_dom)
+### 5.4. jouer_match(dif_vis, dif_dom) / 4
 
 <div align="justify">
   
@@ -219,7 +219,7 @@ Si une équipe marque plus de buts que l'autre après cette simulation, elle gag
   - `but_dom`: Nombre de buts marqués par l'équipe domicile.
   - `vrp`: Indicateur de victoire en temps régulier ou en prolongation (1) ou en fusillade (0).
  
-### 5.5. trier_classement(classement)
+### 5.5. trier_classement(classement) / 3
 
 <div align="justify">
   
@@ -234,7 +234,7 @@ Il est important de noter que dans le cas où deux équipes ont le même nombre 
 
 </div>
  
-### 5.6. mis_a_jour_classement(equipe, stats, division, classment) 
+### 5.6. mis_a_jour_classement(equipe, stats, division, classment) / 3
 
 <div align="justify">
 
@@ -257,7 +257,7 @@ La fonction `mis_a_jour_classement` met à jour les statistiques d'une équipe d
 </div>
 
 
-### 5.7. simuler_rencontres(matchs, classement)
+### 5.7. simuler_rencontres(matchs, classement) / 5
 
 <div align="justify">
   
@@ -283,7 +283,7 @@ Après avoir simulé tous les matchs et mis à jour le classement pour chaque ma
 </div>
 
 
-### 5.8. ecrire_classement(classement)
+### 5.8. ecrire_classement(classement) / 5
 
 <div align="justify">
 
@@ -339,7 +339,7 @@ Los-Angeles  L-A 82 33 45  4  70 32  207 263 -56
 
 </div>
 
-### 5.9. equipes_qualifiees(classement)
+### 5.9. equipes_qualifiees(classement) / 8
 
 <div align="justify">
   
@@ -361,7 +361,7 @@ Pour chaque conférence :
 - **Type de retour:**
   - `equipes_series`: Un dictionnaire contenant les équipes qualifiées pour chaque conférence. Pour chaque conférence ("Est" ou "Ouest"), la valeur est une liste de 8 noms d'équipes disposée de manière à respecter la répartition mentionnée ci-dessus.
 
-## 6. Partie 2: Construire la base de données
+## 6. Partie 2: Construire la base de données <a name="part2"></a>
 ### 6.1. creer_df(classement)
 
 <div align="justify">
@@ -634,7 +634,7 @@ La fonction `df_summary_inf` prend en entrée un dataframe représentant les sta
     	 l'équipe qui a le plus de difference de buts est Tampa_Bay avec 59 difference de buts
   ```
 
-## 7. Partie 3: Analyse des données
+## 7. Partie 3: Analyse des données <a name="part3"></a>
 ### 7.1. df_summary_division(df, criteria, ascending):
 
 Cette fonction affiche un graphique visualisant le classement des équipes au sein de chaque division en fonction du critère donné (par exemple, nombre de points ou nombre de buts). Les équipes sont triées selon le critère choisi, et la direction du tri peut être spécifiée.
@@ -771,7 +771,24 @@ Cette fonction affiche un graphique circulaire (ou "camembert") représentant le
 
 |**Nom des fonctions**|**Nombre de points attribuer**|
 | :- | :- |
-|creer_animal                              | 2  |
+|lire_classement         |5 |
+|lire_match              |3 |
+|trouver_equipe_division |2 |
+|jouer_match             |4 |
+|trier_classement        |3 |
+|mis_a_jour_classement   |3 |
+|simuler_rencontres      |5 |
+|ecrire_classement       |8 |
+|equipes_qualifiees      |15 |  
+|lire_classement         |3 |
+|creer_df                |4 |
+|df_extraite_divison     |3 |
+|df_sort_type            |4 |
+|df_summary_inf          |6 |  
+|df_summary_divison      |10|
+|df_groupby_div          |2 |
+|df_summary_league       |10|
+|df_secteur_div          |10|  
 
 
 ## Annexe: Guide et normes de codage <a name="annexe"></a>
