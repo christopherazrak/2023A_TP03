@@ -294,15 +294,44 @@ La structure du fichier "classement_final.txt" doit être organisée de manière
 Le format du classement doit suivre le modèle suivant:
 
 ```
-            ABV MJ  V   D   DP  PTS VRP BP  BC  DIFF
-Tampa_Bay   T-B 52  39  11  2   80  35  205 146 +59
-Toronto     TOR 51  31  17  3   65  31  179 145 +34
-Montreal    MTL 53  29  18  6   64  27  160 155 +5
-Boston      BOS 52  28  17  7   63  27  149 135 +14
-Buffalo     BUF 51  25  20  6   56  22  148 156 -8
-Florida     FLA 50  21  21  8   50  19  156 175 -19
-Detroit     DET 53  21  25  7   49  19  150 174 -24
-Ottawa      OTT 52  19  28  5   43  19  159 194 -35
+Atlantic     ABV MJ V  D  DP PTS VRP BP  BC  DIFF
+Tampa_Bay    T-B 82 63 16  3 129 56  320 207 +113 
+Toronto      TOR 82 54 21  7 115 54  294 226 +68  
+Boston       BOS 82 45 28  9  99 42  244 226 +18  
+Montreal     MTL 82 42 31  9  93 39  253 254 -1   
+Florida      FLA 82 34 37 11  79 29  232 274 -42  
+Buffalo      BUF 82 35 40  7  77 31  235 270 -35  
+Detroit      DET 82 32 41  9  73 30  233 270 -37  
+Ottawa       OTT 82 25 48  9  59 25  228 305 -77  
+
+Metropolitan ABV MJ V  D  DP PTS VRP BP  BC  DIFF
+NY_Islanders NYI 82 51 23  8 110 47  259 203 +56  
+Pittsburgh   PIT 82 46 25 11 103 45  278 238 +40  
+Carolina     CAR 82 46 28  8 100 43  250 237 +13  
+Columbus     CLB 82 46 30  6  98 45  262 237 +25  
+Washington   WAS 82 45 30  7  97 41  267 256 +11  
+NY_Rangers   NYR 82 37 36  9  83 31  239 267 -28  
+Philadelphia PHI 82 37 38  7  81 33  234 269 -35  
+New_Jersey   N-J 82 30 42 10  70 29  226 267 -41  
+
+Central      ABV MJ V  D  DP PTS VRP BP  BC  DIFF
+Winnipeg     WIN 82 57 22  3 117 55  296 214 +82  
+Nashville    NAS 82 46 30  6  98 45  264 219 +45  
+Dallas       DAL 82 45 32  5  95 43  223 214 +9   
+Minnesota    MIN 82 42 34  6  90 39  232 228 +4   
+St-Louis     STL 82 37 40  5  79 37  226 244 -18  
+Colorado     COL 82 33 39 10  76 33  254 270 -16  
+Chicago      CHI 82 24 48 10  58 23  226 308 -82  
+
+Pacific      ABV MJ V  D  DP PTS VRP BP  BC  DIFF
+San-Jose     SJS 82 50 23  9 109 49  288 251 +37  
+Calgary      CAL 82 49 24  9 107 47  287 246 +41  
+Vegas        VGK 82 46 29  7  99 44  250 226 +24  
+Vancouver    VAN 82 40 34  8  88 38  247 247 +0   
+Edmonton     EDM 82 34 36 12  80 31  238 273 -35  
+Anaheim      ANA 82 34 36 12  80 30  216 253 -37  
+Arizona      ARI 82 33 42  7  73 30  206 252 -46  
+Los-Angeles  L-A 82 33 45  4  70 32  207 263 -56 
 ```
 
 - **Paramètre :**
@@ -559,84 +588,49 @@ La fonction `df_summary_inf` prend en entrée un dataframe représentant les sta
   ```
   
   ```
-    Stats division Atlantic:
-    
+    Stats division Atlantic:  
     	 l'équipe qui a le plus de victoire est Tampa_Bay avec 39 victoire
-    
     	 l'équipe qui a le plus de defaite est Ottawa avec 28 defaite
-    
     	 l'équipe qui a le plus de defaite par prolongation est Florida avec 8 defaite par prolongation
-    
     	 l'équipe qui a le plus de points est Tampa_Bay avec 80 points
-    
     	 l'équipe qui a le plus de buts marquer est Tampa_Bay avec 205 buts marquer
-    
     	 l'équipe qui a le plus de buts encaisser est Ottawa avec 194 buts encaisser
-    
     	 l'équipe qui a le plus de difference de buts est Tampa_Bay avec 59 difference de buts
     
     Stats division Metropolitan:
-    
     	 l'équipe qui a le plus de victoire est NY_Islanders avec 30 victoire
-    
     	 l'équipe qui a le plus de defaite est New_Jersey avec 24 defaite
-    
     	 l'équipe qui a le plus de defaite par prolongation est NY_Rangers avec 7 defaite par prolongation
-    
     	 l'équipe qui a le plus de points est NY_Islanders avec 66 points
-    
     	 l'équipe qui a le plus de buts marquer est Pittsburgh avec 183 buts marquer
-    
     	 l'équipe qui a le plus de buts encaisser est Philadelphia avec 176 buts encaisser
-    
     	 l'équipe qui a le plus de difference de buts est NY_Islanders avec 26 difference de buts
     
     Stats division Central:
-    
     	 l'équipe qui a le plus de victoire est Winnipeg avec 34 victoire
-    
     	 l'équipe qui a le plus de defaite est Chicago avec 24 defaite
-    
     	 l'équipe qui a le plus de defaite par prolongation est Chicago avec 9 defaite par prolongation
-    
     	 l'équipe qui a le plus de points est Winnipeg avec 70 points
-    
     	 l'équipe qui a le plus de buts marquer est Winnipeg avec 185 buts marquer
-    
     	 l'équipe qui a le plus de buts encaisser est Chicago avec 196 buts encaisser
-    
     	 l'équipe qui a le plus de difference de buts est Winnipeg avec 39 difference de buts
     
     Stats division Pacific:
-    
     	 l'équipe qui a le plus de victoire est Calgary avec 34 victoire
-    
     	 l'équipe qui a le plus de defaite est Los-Angeles avec 27 defaite
-    
     	 l'équipe qui a le plus de defaite par prolongation est Anaheim avec 9 defaite par prolongation
-    
     	 l'équipe qui a le plus de points est Calgary avec 73 points
-    
     	 l'équipe qui a le plus de buts marquer est Calgary avec 197 buts marquer
-    
     	 l'équipe qui a le plus de buts encaisser est Edmonton avec 172 buts encaisser
-    
     	 l'équipe qui a le plus de difference de buts est Calgary avec 45 difference de buts
     
     Stats ligue:
-    
     	 l'équipe qui a le plus de victoire est Tampa_Bay avec 39 victoire
-    
     	 l'équipe qui a le plus de defaite est Ottawa avec 28 defaite
-    
     	 l'équipe qui a le plus de defaite par prolongation est Anaheim avec 9 defaite par prolongation
-    
     	 l'équipe qui a le plus de points est Tampa_Bay avec 80 points
-    
     	 l'équipe qui a le plus de buts marquer est Tampa_Bay avec 205 buts marquer
-    
     	 l'équipe qui a le plus de buts encaisser est Chicago avec 196 buts encaisser
-    
     	 l'équipe qui a le plus de difference de buts est Tampa_Bay avec 59 difference de buts
   ```
 
