@@ -4,9 +4,9 @@
 
 # TP03 : Librairies scientifiques et graphiques
 - [Directives particulières](#directives)
-- [Introduction](#Introduction)
-- [Objectifs du laboratoire](#Objectif)
-- [Description du problème](#Description)
+- [Introduction](#introduction)
+- [Objectifs du laboratoire](#objectif)
+- [Description du problème](#description)
 - [Déroulement d'une saison de la LNH](#saison)
 - [Partie 1: Lire et construire la base de données](#part1)
 - [Partie 2: Construire la base de données](#part2)
@@ -21,12 +21,12 @@
 * Noms de variables et fonctions adéquats (concis, compréhensibles);  
 * Pas de librairies externes autres que celles déjà importées;
 
-## 1. Introduction <a name="Introduction"></a>
+## 1. Introduction <a name="introduction"></a>
 <div align="justify">
 L’analyse des données fait partie des disciplines les plus prisées de nos jours. Outil stratégique au sein des organisations, elle permet entre autres de mieux comprendre des événements qui se produisent avec les facteurs qui les favorisent, ou encore de mesurer l’impact d’une opération ou d’une politique grâce à des indicateurs de performance.
 </div>
 
-## 2. Objectifs du laboratoire <a name="Objectif"></a>
+## 2. Objectifs du laboratoire <a name="objectif"></a>
 
 <div align="justify">
   
@@ -37,7 +37,7 @@ L’analyse des données fait partie des disciplines les plus prisées de nos jo
 - **Analyse avec les bibliothèques scientifiques** : Exploiter des bibliothèques telles que pandas, numpy, matplotlib et autres pour effectuer une analyse complète des données.
 </div>
 
-## 3. Description du problème <a name="Description"></a>
+## 3. Description du problème <a name="description"></a>
 
 <div align="justify">
   
