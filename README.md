@@ -767,7 +767,7 @@ Cette fonction affiche un graphique circulaire (ou "camembert") représentant le
   </p>
 
   
-## 8. Barème /90 <a name="bareme"></a>
+## 8. Barème /100 <a name="bareme"></a>
 
 |**Nom des fonctions**|**Nombre de points attribuer**|
 | :- | :- |
@@ -778,8 +778,8 @@ Cette fonction affiche un graphique circulaire (ou "camembert") représentant le
 |trier_classement        |3 |
 |mis_a_jour_classement   |3 |
 |simuler_rencontres      |5 |
-|ecrire_classement       |5 |
-|equipes_qualifiees      |8 |  
+|ecrire_classement       |8 |
+|equipes_qualifiees      |15 |  
 |lire_classement         |3 |
 |creer_df                |4 |
 |df_extraite_divison     |3 |
