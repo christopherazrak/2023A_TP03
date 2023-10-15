@@ -314,12 +314,15 @@ Ottawa      OTT 52  19  28  5   43  19  159 194 -35
 
 <div align="justify">
   
-La fonction `equipes_qualifiees` détermine les équipes de hockey qui se qualifient pour les séries éliminatoires en se basant sur le classement final de la saison régulière.
+La fonction `equipes_qualifiees` détermine les équipes de hockey qualifiées pour les séries éliminatoires à partir du classement final de la saison régulière.
 
-À la fin de la saison, le classement de chacune des 4 divisions est établi selon le nombre de points accumulés. En cas d’égalité de points entre deux équipes, la statistique VRP détermine la meilleure équipe. Dans chaque conférence :
+Au terme de la saison régulière, chaque division est classée selon le nombre de points accumulés par les équipes. Si deux équipes ou plus ont le même nombre de points, la statistique VRP est utilisée comme critère de départage.
 
+La conférence `Est` est constituée des divisions `Atlantic` et `Metropolitan`, tandis que la conférence `Ouest` regroupe les divisions `Central` et `Pacific`.
+
+Pour chaque conférence :
   1. Les 3 meilleures équipes de chaque division sont automatiquement qualifiées.
-  2. Les deux équipes « repêchées » qui complètent la liste des 8 équipes qualifiées sont les deux meilleures parmi les équipes non automatiquement qualifiées de ces deux divisions.
+  2. Parmi les équipes non encore qualifiées de ces deux divisions, les deux ayant le plus de points (en considérant aussi le critère VRP) sont choisies comme équipes "repêchées". Si ces deux équipes repêchées proviennent de deux divisions différentes, la première équipe repêchée est insérée à la 4ème position et la deuxième à la 8ème position de la liste des équipes qualifiées. Si les deux équipes repêchées sont de la même division, la première est positionnée en fonction de la division à laquelle elle appartient: soit à la 4ème position (si elle provient de la première division) ou à la 8ème position (si elle provient de la deuxième division), et vice-versa pour la deuxième équipe repêchée.
   3. La disposition des équipes repêchées suit une logique basée sur leur division d'origine.
 </div>
 
@@ -327,7 +330,7 @@ La fonction `equipes_qualifiees` détermine les équipes de hockey qui se qualif
   - `classement` : un dictionnaire contenant les statistiques des équipes pour chaque division. 
 
 - **Type de retour:**
-  - `equipes_series`: Un dictionnaire contenant deux clés : "Est" et "Ouest". La valeur associée à chaque clé est une liste de 8 noms d'équipes qualifiées pour la conférence correspondante. La liste est disposée de manière à ce qu'elle respecte la répartition : 3 équipes de la première division, 1 équipe repêchée, 3 équipes de la deuxième division, 1 équipe repêchée.
+  - `equipes_series`: Un dictionnaire contenant les équipes qualifiées pour chaque conférence. Pour chaque conférence ("Est" ou "Ouest"), la valeur est une liste de 8 noms d'équipes disposée de manière à respecter la répartition mentionnée ci-dessus.
 
 ## 6. Partie 2: Construire la base de données
 ### 6.1. creer_df(classement)
