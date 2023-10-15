@@ -134,7 +134,7 @@ Cette fonction est chargée de lire les informations relatives aux matchs à par
 
 <div align="justify">
 
-La première ligne du fichier `matchs2019.txt` indique le nombre total de matchs, par exemple `467`. Après avoir lu cette information, la fonction parcourt chaque ligne du fichier pour identifier les deux équipes qui joueront dans un match spécifique. Par exemple, une entrée telle que `TOR MTL` signifie que l'équipe de `Toronto` joue en déplacement contre celle de `Montréal`. Chaque ligne du fichier correspond donc à un match distinct et est transformée en une sous-liste de deux éléments dans la liste retournée.</div>
+La fonction parcourt chaque ligne du fichier pour identifier les deux équipes qui joueront dans un match spécifique. Par exemple, une entrée telle que `TOR MTL` signifie que l'équipe de `Toronto` joue en déplacement contre celle de `Montréal`. Chaque ligne du fichier correspond donc à un match distinct et est transformée en une sous-liste de deux éléments dans la liste retournée.</div>
 
 - **Type de retour:**
   - Une liste de listes, où chaque sous-liste contient deux chaînes de caractères (des acronymes).
