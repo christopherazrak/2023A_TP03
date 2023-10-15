@@ -283,7 +283,7 @@ Après avoir simulé tous les matchs et mis à jour le classement pour chaque ma
 </div>
 
 
-### 8. ecrire_classement(classement)
+### 5.8. ecrire_classement(classement)
 
 <div align="justify">
 
@@ -305,23 +305,29 @@ Detroit     DET 53  21  25  7   49  19  150 174 -24
 Ottawa      OTT 52  19  28  5   43  19  159 194 -35
 ```
 
-Chaque ligne après l'en-tête représente une équipe, avec des détails:
-  - Nom complet
-  - Abréviation
-  - Nombre de matchs joués (MJ)
-  - Nombre de victoires (V),
-  - Nombre de défaites (D),
-  - Nombre de défaites en prolongation (DP),
-  - Nombre de points totaux (PTS),
-  - Nombre de victoires en temps régulier ou en prolongation (VRP),
-  - Nombre de buts marqués (BP),
-  - Nombre de buts concédés (BC)
-  - La différence de buts (DIFF).
-
 - **Paramètre :**
   - `classement`: Un dictionnaire de dictionnaires représentant le classement final des équipes par division.
 
 </div>
+
+### 5.9. equipes_qualifiees(classement)
+
+<div align="justify">
+  
+La fonction `equipes_qualifiees` détermine les équipes de hockey qui se qualifient pour les séries éliminatoires en se basant sur le classement final de la saison régulière.
+
+À la fin de la saison, le classement de chacune des 4 divisions est établi selon le nombre de points accumulés. En cas d’égalité de points entre deux équipes, la statistique VRP détermine la meilleure équipe. Dans chaque conférence :
+
+  1. Les 3 meilleures équipes de chaque division sont automatiquement qualifiées.
+  2. Les deux équipes « repêchées » qui complètent la liste des 8 équipes qualifiées sont les deux meilleures parmi les équipes non automatiquement qualifiées de ces deux divisions.
+  3. La disposition des équipes repêchées suit une logique basée sur leur division d'origine.
+</div>
+
+- **Paramètres:**
+  - `classement` : un dictionnaire contenant les statistiques des équipes pour chaque division. 
+
+- **Type de retour:**
+  - `equipes_series`: Un dictionnaire contenant deux clés : "Est" et "Ouest". La valeur associée à chaque clé est une liste de 8 noms d'équipes qualifiées pour la conférence correspondante. La liste est disposée de manière à ce qu'elle respecte la répartition : 3 équipes de la première division, 1 équipe repêchée, 3 équipes de la deuxième division, 1 équipe repêchée.
 
 ## 6. Partie 2: Construire la base de données
 ### 6.1. creer_df(classement)
@@ -398,8 +404,8 @@ La fonction `df_extraite_divison` a pour but d'extraire et de retourner un DataF
   - Un DataFrame contenant uniquement les équipes de la division spécifiée. Ce DataFrame ne possède pas la colonne "DIV".
 
 - **Lien utile :** 
-  - Filtrer les données avec Pandas : [Lien](https://pandas.pydata.org/docs/user_guide/indexing.html)
-  - Supprimer une colonne avec Pandas : [Lien](https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.drop.html)
+  - [Filtrer les données avec Pandas](https://pandas.pydata.org/docs/user_guide/indexing.html)
+  - [Supprimer une colonne avec Pandas](https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.drop.html)
 
 </div>
 
@@ -470,7 +476,7 @@ La fonction `df_sort_type` permet de trier un DataFrame selon une colonne spéci
 
 
 - **Lien utile :** 
-  - Trier un DataFrame avec Pandas: [Lien](https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.sort_values.html)
+  - [Trier un DataFrame avec Pandas](https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.sort_values.html)
 </div>
 
 - **Exemple:**
@@ -640,6 +646,10 @@ Cette fonction affiche un graphique visualisant le classement des équipes au se
   - `df`: DataFrame Pandas qui contient les informations de toutes les équipes de la ligue.
   - `criteria : Le critère de tri, tel que "PTS" pour les points, "V" pour les victoires, "BP" pour les buts marqués, etc.
   - `ascending`:  Direction du tri. Si `True`, le tri est ascendant, sinon il est descendant.
+    
+- **Lien utile :** 
+  - [Barplot avec Seaborn](https://seaborn.pydata.org/generated/seaborn.barplot.html)
+  - [Multi-plot grids avec Seaborn](https://seaborn.pydata.org/tutorial/axis_grids.html)
 
 - **Exemple:**
   ```python
@@ -675,7 +685,10 @@ Cette fonction génère un graphique illustrant le classement de toutes les équ
   - `df`: DataFrame Pandas qui contient les informations de toutes les équipes de la ligue.
   - `criteria : Le critère de tri, tel que "PTS" pour les points, "V" pour les victoires, "BP" pour les buts marqués, etc.
   - `ascending`:  Direction du tri. Si `True`, le tri est ascendant, sinon il est descendant.
-
+    
+- **Lien utile :** 
+  - [Barplot avec Seaborn](https://seaborn.pydata.org/generated/seaborn.barplot.html)
+    
 - **Exemple:**
 
   ```python    
@@ -723,9 +736,13 @@ Cette fonction affiche un graphique circulaire (ou "camembert") représentant le
 
 - **Paramètre:**
   - `df`: DataFrame Pandas qui contient les informations de toutes les équipes de la ligue.
-  - `criteria : Le critère de tri, tel que "PTS" pour les points, "V" pour les victoires, "BP" pour les buts marqués, etc.
+  - `criteria` : Le critère de tri, tel que "PTS" pour les points, "V" pour les victoires, "BP" pour les buts marqués, etc.
   - `ascending`:  Direction du tri. Si `True`, le tri est ascendant, sinon il est descendant.
-
+    
+- **Lien utile :** 
+  - [Grouper dataframe avec Pandas](https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.groupby.html)
+  - [Pie-charts avec Plotly Express](https://plotly.com/python/pie-charts/)
+    
 - **Exemple:**
 
   ```python
