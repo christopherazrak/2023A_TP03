@@ -277,7 +277,7 @@ Ces dictionnaires sont ensuite utilisés pour mettre à jour le classement gén�
 Après avoir simulé tous les matchs et mis à jour le classement pour chaque match, la fonction `trier_classement(classement)` est appelée pour s'assurer que le classement des équipes au sein de chaque division est organisé de manière descendante selon leur nombre total de points.
 
 - **Paramètres :**
-  - `matchs`: Une liste de matchs à simuler. Chaque match est représenté par une liste contenant le nom et la division des deux équipes impliquées.
+  - `matchs`: Une liste de matchs à simuler. Chaque match est représenté par une liste contenant le nom des deux équipes impliquées.
   - `classement`: Un dictionnaire de dictionnaires représentant le classement actuel des équipes par division.
 
 </div>
