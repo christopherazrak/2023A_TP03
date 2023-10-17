@@ -362,7 +362,43 @@ Pour chaque conférence :
   - `equipes_series`: Un dictionnaire contenant les équipes qualifiées pour chaque conférence. Pour chaque conférence ("Est" ou "Ouest"), la valeur est une liste de 8 noms d'équipes disposée de manière à respecter la répartition mentionnée ci-dessus.
 
 ## 6. Partie 2: Construire la base de données <a name="part2"></a>
-### 6.1. creer_df(classement)
+
+    
+
+
+
+### 6.1. lire_classement() / 3
+ 
+<div align="justify">
+ 
+Similairement à la fonction 5.1, cette fonction est destinée à lire la base de données depuis le fichier `classement2019.txt`. Par contre, les informations des équipes doivent également contenir la clé ‘DIV’ qui contient la division de l’équipe en question.
+ 
+- **Type de retour:**
+  - Le dictionnaire principal est divisé par divisions.
+  - Un dictionnaire dont les clés sont les noms des divisions et les valeurs sont des dictionnaires.
+  - Chaque sous-dictionnaire correspond à une équipe et contient des paires clé-valeur pour différentes informations sur l'équipe.
+ 
+- **Exemple:**
+  ```python
+   {​​​​​​​​ 
+  'Atlantic': {​​​​​​​​
+  'Tampa_Bay':{​​​​​​​​
+  'ABV': 'T-B',
+  # ...
+  # les autres colonnes du fichier
+  'DIV': 'Atlantic'
+       }​​​​​​​​,
+  'Toronto':{​​​​​​​​
+  'ABV': 'TOR',
+  # ...
+  # les autres colonnes du fichier
+  'DIV': 'Atlantic'
+       }​​​​​​​​,
+  # Toutes les autres équipes de la division
+   }​​​​​​​​
+  ```
+
+### 6.2. creer_df(classement)
 
 <div align="justify">
 
@@ -421,7 +457,7 @@ print(nhl_df)
 ```
 </div>
 
-### 6.2. df_extraite_divison(df, division)
+### 6.3. df_extraite_divison(df, division)
 
 <div align="justify">
 
@@ -492,7 +528,7 @@ La fonction `df_extraite_divison` a pour but d'extraire et de retourner un DataF
     Anaheim      ANA  52  21  22   9   51   18  123  162   -39
   ```
 
-### 6.3. df_sort_type(df, column, ascending):
+### 6.4. df_sort_type(df, column, ascending):
 
 <div align="justify">
   
@@ -572,7 +608,7 @@ La fonction `df_sort_type` permet de trier un DataFrame selon une colonne spéci
   ```
 
 
-### 6.4. df_summary_inf(df):
+### 6.5. df_summary_inf(df):
 
 <div align="justify">
   
